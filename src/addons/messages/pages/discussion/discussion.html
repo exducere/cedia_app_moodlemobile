@@ -15,10 +15,10 @@
                 <!-- WS didn't filter the conversation name, see MDL-81815. -->
                 <core-format-text [text]="title" contextLevel="system" [contextInstanceId]="0" [wsNotFiltered]="true" />
                 @if (conversation?.isfavourite) {
-                    <ion-icon name="fas-star" [attr.aria-label]="'core.favourites' | translate" />
+                    <ion-icon name="cedia-star" [attr.aria-label]="'core.favourites' | translate" />
                 }
                 @if (conversation?.ismuted) {
-                    <ion-icon name="fas-bell-slash" [attr.aria-label]="'addon.messages.mutedconversation' | translate" />
+                    <ion-icon name="cedia-notification-slash" [attr.aria-label]="'addon.messages.mutedconversation' | translate" />
                 }
             </h1>
         </ion-title>
@@ -27,9 +27,9 @@
     <core-navbar-buttons slot="end">
         <core-context-menu [attr.aria-label]="'addon.messages.conversationactions' | translate">
             <core-context-menu-item [hidden]="isSelf || !showInfo || isGroup" [priority]="1000"
-                [content]="'addon.messages.info' | translate" (action)="viewInfo()" iconAction="fas-circle-info" />
+                [content]="'addon.messages.info' | translate" (action)="viewInfo()" iconAction="cedia-information" />
             <core-context-menu-item [hidden]="isSelf || !showInfo || !isGroup" [priority]="1000"
-                [content]="'addon.messages.groupinfo' | translate" (action)="viewInfo()" iconAction="fas-circle-info" />
+                [content]="'addon.messages.groupinfo' | translate" (action)="viewInfo()" iconAction="cedia-information" />
 
             <core-context-menu-item [hidden]="!conversation || conversation.isfavourite" [priority]="800"
                 (action)="changeFavourite($event)" [closeOnClick]="false" [content]="'addon.messages.addtofavourites' | translate"
@@ -100,7 +100,7 @@
         </ion-list>
 
         @if (!messages || messages.length <= 0) {
-            <core-empty-box icon="far-comments" [message]="'addon.messages.nomessagesfound' | translate" />
+            <core-empty-box icon="cedia-message-multiple" [message]="'addon.messages.nomessagesfound' | translate" />
         }
     </core-loading>
     <!-- Scroll bottom. -->

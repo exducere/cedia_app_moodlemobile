@@ -31,12 +31,12 @@ export class CoreSettingsSectionsSource extends CoreRoutedItemsManagerSource<Cor
             {
                 name: 'core.settings.general',
                 path: 'general',
-                icon: 'fas-wrench',
+                icon: 'cedia-tools',
             },
             {
                 name: 'core.settings.spaceusage',
                 path: 'spaceusage',
-                icon: 'fas-list-check',
+                icon: 'cedia-check-list',
             },
             {
                 name: 'core.settings.synchronization',
@@ -49,7 +49,7 @@ export class CoreSettingsSectionsSource extends CoreRoutedItemsManagerSource<Cor
             sections.push({
                 name: 'core.sharedfiles.sharedfiles',
                 path: `${SHAREDFILES_PAGE_NAME}/list/root`,
-                icon: 'fas-folder',
+                icon: 'cedia-folder',
                 params: { manage: true },
             });
         }
@@ -57,7 +57,7 @@ export class CoreSettingsSectionsSource extends CoreRoutedItemsManagerSource<Cor
         sections.push({
             name: 'core.settings.about',
             path: 'about',
-            icon: 'fas-id-card',
+            icon: 'cedia-identity-card',
         });
 
         return { items: sections };

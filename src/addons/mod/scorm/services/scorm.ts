@@ -66,7 +66,7 @@ const STATUS_TO_ICON = {
     browsed: 'moodle-browsed',
     completed: 'fas-check',
     failed: 'fas-xmark',
-    incomplete: 'fas-pen-to-square',
+    incomplete: 'cedia-pencil-edit',
     notattempted: 'far-square',
     passed: 'fas-check-double',
     suspend: 'fas-pause',

@@ -30,7 +30,7 @@
                 <core-infinite-loading [enabled]="reports.loaded && !reports.completed" (action)="fetchMoreReports($event)"
                     [error]="state.loadMoreError" />
             } @else {
-                <core-empty-box icon="fas-rectangle-list" [message]="'core.course.nocontentavailable' | translate" />
+                <core-empty-box icon="cedia-stairs" [message]="'core.course.nocontentavailable' | translate" />
             }
         </core-loading>
     </ion-content>

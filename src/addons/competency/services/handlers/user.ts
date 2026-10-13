@@ -106,7 +106,7 @@ export class AddonCompetencyUserHandlerService implements CoreUserProfileHandler
         }
 
         return {
-            icon: 'fas-award',
+            icon: 'cedia-award',
             title: 'addon.competency.competencies',
             class: 'addon-competency-handler',
             action: (event, user, context, contextId): void => {

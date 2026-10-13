@@ -17,7 +17,7 @@
                 } @else {
                     <ion-card>
                         <ion-item button class="ion-text-wrap item-file item-directory" (click)="openFolder(file)" [detail]="true">
-                            <ion-icon name="fas-folder" slot="start" [attr.aria-label]="'core.folder' | translate" />
+                            <ion-icon name="cedia-folder" slot="start" [attr.aria-label]="'core.folder' | translate" />
                             <ion-label>{{ file.name }}</ion-label>
                         </ion-item>
                     </ion-card>
@@ -25,8 +25,8 @@
             </ng-container>
         </ion-list>
     } @else if (manage){
-        <core-empty-box icon="fas-folder" [message]="'core.sharedfiles.nosharedfiles' | translate" />
+        <core-empty-box icon="cedia-folder" [message]="'core.sharedfiles.nosharedfiles' | translate" />
     } @else {
-        <core-empty-box icon="fas-folder" [message]="'core.sharedfiles.nosharedfilestoupload' | translate" />
+        <core-empty-box icon="cedia-folder" [message]="'core.sharedfiles.nosharedfilestoupload' | translate" />
     }
 </core-loading>

@@ -2,12 +2,12 @@
 <core-navbar-buttons slot="end">
     @if (!courseContentsPage) {
         <ion-button fill="clear" (click)="openModuleSummary()" aria-haspopup="true" [ariaLabel]="'core.info' | translate">
-            <ion-icon name="fas-circle-info" slot="icon-only" aria-hidden="true" />
+            <ion-icon name="cedia-information" slot="icon-only" aria-hidden="true" />
         </ion-button>
     } @else {
         <core-context-menu>
             <core-context-menu-item [priority]="5000" [content]="'core.info' | translate" (action)="openModuleSummary()"
-                iconAction="fas-circle-info" />
+                iconAction="cedia-information" />
         </core-context-menu>
     }
 </core-navbar-buttons>
@@ -23,7 +23,7 @@
             <!-- Activity availability messages -->
             <ion-card class="core-info-card">
                 <ion-item>
-                    <ion-icon name="fas-circle-info" slot="start" aria-hidden="true" />
+                    <ion-icon name="cedia-information" slot="start" aria-hidden="true" />
                     <ion-label>
                         <p>{{ 'addon.mod_choice.previewing' | translate }}</p>
                     </ion-label>
@@ -35,7 +35,7 @@
             <!-- Inform what will happen with the choices. -->
             <ion-card class="core-info-card">
                 <ion-item>
-                    <ion-icon name="fas-circle-info" slot="start" aria-hidden="true" />
+                    <ion-icon name="cedia-information" slot="start" aria-hidden="true" />
                     <ion-label>{{ publishInfo | translate }}</ion-label>
                 </ion-item>
             </ion-card>
@@ -172,7 +172,7 @@
         @if (!canSeeResults && showResultsMessage) {
             <ion-card class="core-info-card">
                 <ion-item>
-                    <ion-icon name="fas-circle-info" slot="start" aria-hidden="true" />
+                    <ion-icon name="cedia-information" slot="start" aria-hidden="true" />
                     <ion-label>
                         <p>{{ 'addon.mod_choice.noresultsviewable' | translate }}</p>
                     </ion-label>

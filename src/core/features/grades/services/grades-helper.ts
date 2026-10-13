@@ -569,11 +569,11 @@ export class CoreGradesHelperProvider {
             text.indexOf('fa-list-check') > -1
         ) {
             row.itemtype = 'outcome';
-            row.icon = 'fas-list-check';
+            row.icon = 'cedia-check-list';
             row.iconAlt = Translate.instant('core.grades.outcome');
         } else if (text.indexOf('i/folder') > -1 || text.indexOf('fa-folder') > -1 || text.indexOf('category-content') > -1) {
             row.itemtype = 'category';
-            row.icon = 'fas-folder';
+            row.icon = 'cedia-folder';
             row.iconAlt = Translate.instant('core.grades.category');
         } else if (
             text.indexOf('/manual_item') > -1 ||
@@ -582,7 +582,7 @@ export class CoreGradesHelperProvider {
             text.indexOf('fa-pen-to-square') > -1
         ) {
             row.itemtype = 'manual';
-            row.icon = 'fas-pen-to-square';
+            row.icon = 'cedia-pencil-edit';
             row.iconAlt = Translate.instant('core.grades.manualitem');
         } else if (text.indexOf('/calc') > -1 || text.indexOf('fa-calculator') > -1) {
             row.itemtype = 'calc';

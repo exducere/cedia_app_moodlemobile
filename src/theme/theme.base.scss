@@ -527,3 +527,230 @@ video::-webkit-media-text-track-display {
     clip: auto;
     white-space: normal;
 }
+
+// ============================================
+// CEDIA Home Page Styles
+// ============================================
+page-core-mainmenu-home {
+
+    // Toolbar / header
+    .home-toolbar-my {
+        --background: linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(217 50% 25%) 100%);
+        --color: #fff;
+
+        ion-grid {
+            padding: 0;
+        }
+
+        h3 {
+            margin: 0;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .home-col-welcome {
+            padding: 0;
+        }
+
+        .core-header-sitename {
+            color: var(--accent, #29c6ff);
+        }
+
+        core-user-menu-button {
+            --color: #fff;
+        }
+    }
+
+    // Search input
+    .core-main-content-searchcourse {
+        padding: 12px 16px 0;
+
+    }
+
+    .search-course {
+        --background: white;
+        --border-radius: 100px;
+        --padding-start: 16px;
+        --padding-end: 16px;
+        --placeholder-color: #999;
+        --color: #333;
+        font-size: 0.95rem;
+        min-height: 44px;
+        border-radius: 100px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    }
+
+    // Courses title
+    .core-mainmenu-titlecourse {
+        padding: 16px 16px 16px;
+
+        .core-title-course {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--secondary, #0c0c43);
+        }
+
+        .core-subtitle-course {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #999;
+            margin-top: 2px;
+        }
+    }
+
+    // Filter pills (horizontal scrollable)
+    .filter-pills-scroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 10px 16px;
+        scrollbar-width: none;
+
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .filter-pills {
+        display: flex;
+        gap: 10px;
+        flex-wrap: nowrap;
+        width: max-content;
+    }
+
+    .filter-pill {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+        padding: 10px 18px;
+        border-radius: 50px;
+        border: 1.5px solid #e0e2e8;
+        background: #fff;
+        color: #6b7280;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        flex-shrink: 0;
+
+        ion-icon {
+            font-size: 18px;
+            color: #9ca3af;
+        }
+
+        .filter-pill-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 22px;
+            height: 22px;
+            padding: 0 6px;
+            border-radius: 50px;
+            background: #e8eaf0;
+            color: #6b7280;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        &.active {
+            background: #4B519E;
+            border-color: #4a6cf7;
+            color: #fff;
+            /* Cambiamos -5px a -2px para que se note más la base */
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+            ion-icon {
+                color: #fff;
+            }
+
+            .filter-pill-count {
+                background: rgba(255, 255, 255, 0.25);
+                color: #fff;
+            }
+        }
+    }
+
+    // Swiper coverflow
+    .coverflow-swiper {
+        padding: 16px 0 24px;
+        height: 50%;
+
+        swiper-slide {
+            width: 280px;
+            background: transparent;
+            overflow: visible;
+        }
+    }
+
+    .coverflow-slide {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    .course-card {
+        width: 100%;
+
+        core-courses-course-list-item {
+            width: 100%;
+            display: block;
+
+            ion-card {
+                margin: 0;
+                border-radius: 16px;
+                box-shadow: 0 4px 20px rgba(2, 0, 41, 0.1);
+                border: 1px solid rgba(12, 12, 67, 0.04);
+                overflow: hidden;
+                transition: box-shadow 0.3s ease;
+            }
+        }
+    }
+
+    // Active slide enhancement
+    swiper-slide.swiper-slide-active {
+        .course-card core-courses-course-list-item ion-card {
+            box-shadow: 0 8px 30px rgba(2, 0, 41, 0.15);
+        }
+    }
+
+    // Empty box
+    .home-empty-box {
+        padding: 32px 16px;
+
+        .item-heading {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .subdued {
+            color: var(--subdued-text-color);
+        }
+    }
+
+    // Entrance animations
+    @keyframes homeEntrance {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .home-entrance {
+        opacity: 0;
+        animation: homeEntrance 0.45s ease-out forwards;
+    }
+
+    .home-entrance-1 { animation-delay: 0.05s; }
+    .home-entrance-2 { animation-delay: 0.15s; }
+    .home-entrance-3 { animation-delay: 0.25s; }
+    .home-entrance-4 { animation-delay: 0.4s; }
+}

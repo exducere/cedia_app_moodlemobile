@@ -43,7 +43,7 @@ export class AddonMessagesMainMenuHandlerService implements CoreMainMenuHandler,
     priority = 700;
 
     protected handler: CoreMainMenuHandlerToDisplay = {
-        icon: 'fas-comments',
+        icon: 'cedia-message',
         title: 'addon.messages.messages',
         page: ADDON_MESSAGES_PAGE_NAME,
         class: 'addon-messages-handler',

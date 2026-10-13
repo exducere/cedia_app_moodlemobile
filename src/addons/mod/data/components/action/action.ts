@@ -168,12 +168,12 @@ export class AddonModDataActionComponent implements OnInit {
                     ? {
                         action: () => this.undoDelete(),
                         text: 'core.restore',
-                        icon: 'fas-rotate-left',
+                        icon: 'cedia-rotate-left',
                     }
                     : {
                         action: () => this.deleteEntry(),
                         text: 'core.delete',
-                        icon: 'fas-trash',
+                        icon: 'cedia-trash',
                     },
             );
 
@@ -206,7 +206,7 @@ export class AddonModDataActionComponent implements OnInit {
             items.unshift({
                 action: () => this.viewEntry(),
                 text: 'addon.mod_data.showmore',
-                icon: 'fas-magnifying-glass-plus',
+                icon: 'cedia-search-plus',
             });
         }
 

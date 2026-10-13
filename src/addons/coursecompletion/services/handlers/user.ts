@@ -65,7 +65,7 @@ export class AddonCourseCompletionUserHandlerService implements CoreUserProfileH
      */
     getDisplayData(): CoreUserProfileHandlerData {
         return {
-            icon: 'fas-list-check',
+            icon: 'cedia-check-list',
             title: 'addon.coursecompletion.coursecompletion',
             class: 'addon-coursecompletion-handler',
             action: (event, user, context, contextId): void => {

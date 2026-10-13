@@ -43,7 +43,7 @@ export class AddonNotificationsSettingsHandlerService implements CoreSettingsHan
      */
     getDisplayData(): CoreSettingsHandlerData {
         return {
-            icon: 'fas-bell',
+            icon: 'cedia-notification',
             title: 'addon.notifications.notifications',
             page: ADDONS_NOTICATIONS_SETTINGS_PAGE_NAME,
             class: 'addon-notifications-settings-handler',

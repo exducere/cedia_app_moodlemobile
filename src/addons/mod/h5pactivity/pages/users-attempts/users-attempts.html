@@ -30,7 +30,7 @@
 
         <!-- No attempts. -->
         @if (!users.length && !canLoadMore) {
-            <core-empty-box icon="fas-chart-bar" [message]="'addon.mod_h5pactivity.noparticipants' | translate" />
+            <core-empty-box icon="cedia-analytics" [message]="'addon.mod_h5pactivity.noparticipants' | translate" />
         }
 
         <core-infinite-loading [enabled]="loaded && canLoadMore" [error]="fetchMoreUsersFailed" (action)="fetchMoreUsers($event)" />

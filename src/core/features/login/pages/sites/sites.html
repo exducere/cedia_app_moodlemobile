@@ -11,11 +11,11 @@
         <ion-buttons slot="end">
             @if (accountsList.count > 0) {
                 <ion-button fill="clear" (click)="toggleDelete()" [ariaLabel]="'core.login.toggleremove' | translate">
-                    <ion-icon slot="icon-only" name="fas-pen" aria-hidden="true" />
+                    <ion-icon slot="icon-only" name="cedia-pencil-edit" aria-hidden="true" />
                 </ion-button>
             }
             <ion-button (click)="openSettings()" [ariaLabel]="'core.settings.appsettings' | translate">
-                <ion-icon slot="icon-only" name="fas-gear" aria-hidden="true" />
+                <ion-icon slot="icon-only" name="cedia-gear-complex" aria-hidden="true" />
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
@@ -28,7 +28,7 @@
                     <ion-button slot="end" fill="clear" color="danger" (click)="deleteSite($event, site)"
                         [ariaLabel]="'core.login.removeaccount' | translate"
                         animate.enter="slide-in-right-animation" animate.leave="slide-out-right-animation">
-                        <ion-icon name="fas-trash" slot="icon-only" aria-hidden="true" />
+                        <ion-icon name="cedia-trash" slot="icon-only" aria-hidden="true" />
                     </ion-button>
                 } @else if (site.badge) {
                     <ion-badge slot="end" animate.enter="slide-in-right-animation" animate.leave="slide-out-right-animation">
@@ -42,7 +42,7 @@
     </core-loading>
     <ion-fab slot="fixed" core-fab vertical="bottom" horizontal="end">
         <ion-fab-button (click)="add()" [attr.aria-label]="'core.login.add' | translate">
-            <ion-icon name="fas-plus" aria-hidden="true" />
+            <ion-icon name="cedia-add" aria-hidden="true" />
             <span class="sr-only">{{ 'core.login.add' | translate }}</span>
         </ion-fab-button>
     </ion-fab>

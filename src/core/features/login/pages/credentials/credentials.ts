@@ -367,6 +367,13 @@ export default class CoreLoginCredentialsPage implements OnInit, OnDestroy {
     }
 
     /**
+     * Navigate back to site selection.
+     */
+    navigateBack(): void {
+        CoreNavigator.back();
+    }
+
+    /**
      * @inheritdoc
      */
     ngOnDestroy(): void {

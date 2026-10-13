@@ -78,7 +78,7 @@ export class CoreCoursesMyCoursesMainMenuHandlerService implements CoreMainMenuH
             title: 'core.courses.mycourses',
             page: CORE_COURSES_MYCOURSES_PAGE_NAME,
             class: 'core-courses-my-courses-handler',
-            icon: 'fas-graduation-cap',
+            icon: 'cedia-graduation',
             priority: displayMyCourses ? this.priority + 200 : this.priority,
         };
     }

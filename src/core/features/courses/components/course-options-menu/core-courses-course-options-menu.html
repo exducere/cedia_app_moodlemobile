@@ -14,7 +14,7 @@
         }
         @if (prefetch.status === 'downloaded' || prefetch.status === 'outdated') {
             <ion-item button class="ion-text-wrap" (click)="action('delete')" [detail]="false">
-                <ion-icon name="fas-trash" slot="start" aria-hidden="true" />
+                <ion-icon name="cedia-trash" slot="start" aria-hidden="true" />
                 <ion-label>
                     <p class="item-heading">{{ 'addon.storagemanager.deletedata' | translate }}</p>
                 </ion-label>
@@ -22,14 +22,14 @@
         }
         @if (!course.hidden) {
             <ion-item button class="ion-text-wrap" (click)="action('hide')" [detail]="false">
-                <ion-icon name="fas-eye" slot="start" aria-hidden="true" />
+                <ion-icon name=cedia-view slot="start" aria-hidden="true" />
                 <ion-label>
                     <p class="item-heading">{{ 'core.courses.hidecourse' | translate }}</p>
                 </ion-label>
             </ion-item>
         } @else {
             <ion-item button class="ion-text-wrap" (click)="action('show')" [detail]="false">
-                <ion-icon name="fas-eye-slash" slot="start" aria-hidden="true" />
+                <ion-icon name=cedia-view-off slot="start" aria-hidden="true" />
                 <ion-label>
                     <p class="item-heading">{{ 'core.courses.show' | translate }}</p>
                 </ion-label>

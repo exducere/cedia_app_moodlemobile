@@ -1,60 +1,360 @@
-:host {
-    .core-user-profile-maininfo {
-        padding-top: 16px;
-        ion-label {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 0px;
+// Profile Page Styles - Blue Card Design
 
-            h2 {
-                margin-top: 10px;
+:host {
+
+    // ===== PROFILE HERO =====
+    .profile-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 32px 16px 24px;
+
+        .avatar-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+            width: 110px;
+            height: 110px;
+
+            .edit-avatar {
+                position: absolute;
+                bottom: 4px;
+                right: 4px;
+                width: 30px;
+                height: 30px;
+                --padding-start: 0;
+                --padding-end: 0;
+                margin: 0;
+                background: #4A6CF7;
+                border-radius: 50%;
+                z-index: 3;
+                box-shadow: 0 2px 6px rgba(74, 108, 247, 0.4);
+
+                ion-icon {
+                    font-size: 14px;
+                    color: white;
+                }
             }
         }
+
+        .level-badge {
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #1B2B5E;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+            z-index: 2;
+            box-shadow: 0 3px 8px rgba(27, 43, 94, 0.35);
+
+            .level-label {
+                font-size: 10px;
+                font-weight: 500;
+                letter-spacing: 0.5px;
+                opacity: 0.8;
+            }
+
+            .level-value {
+                font-size: 13px;
+                font-weight: 800;
+                letter-spacing: 0.3px;
+            }
+        }
+
+        .user-fullname {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1B2B5E;
+            text-align: center;
+            margin: 0 0 6px;
+            line-height: 1.3;
+        }
+
+        .user-role {
+            font-size: 14px;
+            font-weight: 500;
+            color: #4A6CF7;
+            text-align: center;
+            margin: 0;
+        }
     }
+
+    // ===== USER AVATAR =====
     core-user-avatar {
-        --core-avatar-size: var(--core-large-avatar-size);
-        --contact-status-size: 24px;
+        --core-avatar-size: 110px;
+        --contact-status-size: 0px;
         --margin-end-on-item: 0px;
         --margin-vertical-on-item: 0px;
+    }
 
-        .contact-status {
-            right: calc(50% - 12px - var(--core-avatar-size) / 2) !important;
+    // ===== SECTION LABEL (outside cards) =====
+    .section-label {
+        font-size: 17px;
+        font-weight: 700;
+        color: #1B2B5E;
+        margin: 8px 20px 12px;
+    }
+
+    // ===== SECTION CARDS =====
+    .section-card {
+        margin: 0 16px 20px;
+        padding: 20px;
+        background: #FFFFFF;
+        border-radius: 18px;
+        box-shadow: 0 2px 12px rgba(74, 108, 247, 0.08);
+    }
+
+    // ===== STATS GRID 2x2 =====
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 0 16px 20px;
+    }
+
+    .stat-card {
+        background: #FFFFFF;
+        border-radius: 18px;
+        padding: 18px 16px 16px;
+        box-shadow: 0 2px 12px rgba(74, 108, 247, 0.08);
+
+        .stat-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
         }
 
-        .edit-avatar {
-            position: absolute;
-            right: calc(50% - 24px - var(--core-avatar-size) / 2);
-            bottom: -12px;
+        .stat-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
 
-            :host-context([dir="rtl"]) & {
-                left: 0;
-                right: unset;
+            ion-icon {
+                font-size: 16px;
             }
-            &::part(native) {
+
+            &.stat-icon-blue {
+                background-color: rgba(74, 108, 247, 0.12);
+                color: #4A6CF7;
+
+                ion-icon { color: #4A6CF7; }
+            }
+        }
+
+        .stat-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            color: #8A9ABD;
+        }
+
+        .stat-value {
+            font-size: 30px;
+            font-weight: 700;
+            color: #1B2B5E;
+            line-height: 1;
+        }
+    }
+
+    // ===== CONTACT CARD =====
+    .contact-card {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+
+            .contact-icon {
+                width: 38px;
+                height: 38px;
                 border-radius: 50%;
-                background: var(--ion-item-background);
+                background-color: #F0F2FB;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+
+                ion-icon {
+                    font-size: 16px;
+                    color: #8A9ABD;
+                }
+            }
+
+            .contact-info {
+                display: flex;
+                flex-direction: column;
+                min-width: 0;
+                justify-content: center;
+
+                .contact-label {
+                    font-size: 10px;
+                    font-weight: 600;
+                    letter-spacing: 0.7px;
+                    text-transform: uppercase;
+                    color: #4A6CF7;
+                    margin-bottom: 2px;
+                }
+
+                .contact-value {
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: #1B2B5E;
+                    word-break: break-word;
+                }
+
+                .contact-link {
+                    color: #4A6CF7;
+                    text-decoration: none;
+                    font-weight: 500;
+                }
             }
         }
     }
 
-    h2 {
-        font: var(--mdl-typography-heading2-font);
+    // ===== MENU CARD =====
+    .menu-card {
+        padding: 4px 0;
+
+        ion-list {
+            padding: 0;
+            background: transparent;
+        }
+
+        .menu-item {
+            --padding-start: 16px;
+            --inner-padding-end: 16px;
+            --min-height: 58px;
+            --background: transparent;
+
+            ion-label {
+                font-size: 15px;
+                font-weight: 600;
+                color: #1B2B5E;
+            }
+
+            &.menu-item-danger ion-label {
+                color: #E53935;
+            }
+        }
+
+        .menu-divider {
+            height: 1px;
+            background-color: #F0F2FB;
+            margin: 0 16px;
+        }
     }
-    h3 {
-        font: var(--mdl-typography-heading4-font);
+
+    // ===== MENU ICON BOXES =====
+    .menu-icon-box {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-inline-end: 14px;
+        flex-shrink: 0;
+
+        ion-icon {
+            font-size: 18px;
+            color: #FFFFFF;
+        }
+
+        &.menu-icon-blue1 { background-color: #4A6CF7; }
+        &.menu-icon-blue2 { background-color: #3A5AE0; }
+        &.menu-icon-blue3 { background-color: #2B47C9; }
+        &.menu-icon-blue4 { background-color: #1B2B5E; }
+        &.menu-icon-gray  { background-color: #8A9ABD; }
+        &.menu-icon-red   { background-color: #E53935; }
     }
-    .core-user-profile-interests {
+
+    .secondary-actions-card {
+        margin-bottom: 32px;
+    }
+
+    // ===== METRICS LOADING =====
+    .metrics-loading {
+        display: flex;
+        justify-content: center;
+        padding: 24px 16px;
+    }
+
+    // ===== ACCORDION (for non-current user) =====
+    ion-accordion-group {
+        margin: 0 16px 16px;
+
+        ion-accordion {
+            margin-bottom: 8px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(74, 108, 247, 0.08);
+
+            ion-item[slot="header"] {
+                --padding-start: 16px;
+                --inner-padding-end: 16px;
+
+                ion-icon {
+                    font-size: 18px;
+                    margin-inline-end: 12px;
+                }
+
+                ion-label {
+                    font-weight: 600;
+                    font-size: 14px;
+                }
+            }
+
+            .accordion-content {
+                padding: 0;
+                background: #FFFFFF;
+
+                ion-list { padding: 0; }
+            }
+        }
+    }
+
+    // ===== INTERESTS =====
+    .interests-container {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 8px;
+
         ion-badge {
             cursor: pointer;
-            margin-left: 4px;
-            margin-right: 4px;
+            margin: 2px 4px 2px 0;
+            font-size: 12px;
+            padding: 6px 12px;
+            border-radius: 16px;
         }
     }
 
+    .description-content { padding: 16px; }
+
+    .item-heading {
+        font-size: 12px;
+        color: #8A9ABD;
+        margin-bottom: 2px;
+    }
 }
 
-:host-context([dir="rtl"]) core-user-avatar .edit-avatar {
-    left: -24px;
-    right: unset;
+// RTL Support
+:host-context([dir="rtl"]) {
+    .interests-container ion-badge {
+        margin: 2px 0 2px 4px;
+    }
 }

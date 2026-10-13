@@ -72,6 +72,7 @@ export class CoreDashboardHomeHandlerService implements CoreMainMenuHomeHandler 
                 this.logger.error('Error getting Dashboard blocks', error);
 
                 return true;
+
             }
         }
 
@@ -89,7 +90,7 @@ export class CoreDashboardHomeHandlerService implements CoreMainMenuHomeHandler 
             title: 'core.courses.mymoodle',
             page: CORE_COURSES_DASHBOARD_PAGE_NAME,
             class: 'core-courses-dashboard-handler',
-            icon: 'fas-gauge-high',
+            icon: 'cedia-dashboard',
         };
     }
 

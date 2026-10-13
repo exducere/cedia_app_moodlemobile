@@ -17,7 +17,7 @@
         <div class="list-item-limited-width">
             <ion-card class="core-info-card">
                 <ion-item class="ion-text-wrap">
-                    <ion-icon name="fas-circle-info" slot="start" aria-hidden="true" />
+                    <ion-icon name="cedia-information" slot="start" aria-hidden="true" />
                     <ion-label>
                         <p>{{ 'core.policy.contactdpo' | translate }}</p>
                     </ion-label>
@@ -160,7 +160,7 @@
                 }
                 @if (!policy.hasAccepted && !policy.hasDeclined) {
 
-                    <ion-icon name="fas-clock" color="warning" aria-hidden="true" />
+                    <ion-icon name="cedia-clock" color="warning" aria-hidden="true" />
 
                     <span class="core-policy-user-agreement-status">{{ 'core.policy.acceptancestatuspending' | translate }}</span>
 
@@ -250,7 +250,7 @@
         </ion-label>
         <ion-button fill="clear" (click)="viewFullPolicy($event, policy)"
             [ariaLabel]="'core.policy.viewpolicy' | translate:{policyname: policy.name}">
-            <ion-icon slot="icon-only" name="fas-eye" aria-hidden="true" />
+            <ion-icon slot="icon-only" name=cedia-view aria-hidden="true" />
         </ion-button>
     </ion-item>
 
@@ -344,7 +344,7 @@
                     }
                     @if (!policy.hasAccepted && !policy.hasDeclined) {
 
-                        <ion-icon name="fas-clock" color="warning" aria-hidden="true" />
+                        <ion-icon name="cedia-clock" color="warning" aria-hidden="true" />
 
                         <span class="core-policy-user-agreement-status">{{ 'core.policy.acceptancestatuspending' | translate }}</span>
 

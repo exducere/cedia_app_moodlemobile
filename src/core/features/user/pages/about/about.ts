@@ -41,14 +41,17 @@ import {
 import { CoreModals } from '@services/overlays/modals';
 import { CoreFile } from '@services/file';
 import { CoreFileUtils } from '@singletons/file-utils';
+import { StudentMetrics, StudentMetrics as StudentMetricsService } from '@features/user/services/student-metrics';
+import { CoreUserSupport } from '@features/user/services/support';
+import { CoreOpener } from '@singletons/opener';
 
 /**
- * Page that displays info about a user.
+ * Page that displays user profile with gamified metrics.
  */
 @Component({
     selector: 'page-core-user-about',
     templateUrl: 'about.html',
-    styleUrl: 'about.scss',
+    styleUrls: ['about.scss'],
     imports: [
         CoreSharedModule,
         CoreUserProfileFieldComponent,
@@ -58,6 +61,7 @@ export default class CoreUserAboutPage implements OnInit, OnDestroy {
 
     courseId!: number;
     userLoaded = false;
+    metricsLoaded = false;
     hasContact = false;
     hasDetails = false;
     user?: CoreUserProfile;
@@ -66,6 +70,10 @@ export default class CoreUserAboutPage implements OnInit, OnDestroy {
     interests?: string[];
     displayTimezone = false;
     canShowDepartment = false;
+    metrics?: StudentMetrics;
+    isCurrentUser = false;
+    estimatedHours = 0;
+    userRanking = 1;
 
     protected userId!: number;
     protected site!: CoreSite;
@@ -94,26 +102,61 @@ export default class CoreUserAboutPage implements OnInit, OnDestroy {
      * @inheritdoc
      */
     async ngOnInit(): Promise<void> {
-        this.userId = CoreNavigator.getRouteNumberParam('userId') || 0;
+        this.userId = CoreNavigator.getRouteNumberParam('userId') || this.site.getUserId();
         this.courseId = CoreNavigator.getRouteNumberParam('courseId') || 0;
         this.canShowDepartment = this.userId != this.site.getUserId();
+        this.isCurrentUser = this.userId === this.site.getUserId();
 
         // Allow to change the profile image only in the app profile page.
         this.canChangeProfilePicture =
             !this.courseId &&
-            this.userId == this.site.getUserId() &&
+            this.isCurrentUser &&
             this.site.canUploadFiles() &&
             !CoreUser.isUpdatePictureDisabledInSite(this.site);
 
-        this.fetchUser().finally(() => {
-            this.userLoaded = true;
-        });
+        // Load user data
+        await this.fetchUser();
+        this.userLoaded = true;
+
+        // Load metrics in parallel (only for current user's own profile)
+        if (this.isCurrentUser) {
+            this.loadMetrics();
+        } else {
+            this.metricsLoaded = true;
+        }
+    }
+
+    /**
+     * Load student metrics data.
+     */
+    protected async loadMetrics(): Promise<void> {
+        try {
+            this.metrics = await StudentMetricsService.getStudentMetrics(this.userId);
+            this.computeDerivedMetrics();
+        } catch (error) {
+            console.warn('Failed to load student metrics:', error);
+        } finally {
+            this.metricsLoaded = true;
+        }
+    }
+
+    /**
+     * Compute derived metrics (estimated hours, ranking) from base metrics.
+     */
+    protected computeDerivedMetrics(): void {
+        if (!this.metrics) {
+            return;
+        }
+
+        // Estimate study hours: ~15h per completed course + ~5h per in-progress course
+        this.estimatedHours = this.metrics.coursesCompleted * 15 + this.metrics.coursesInProgress * 5;
+
+        // Compute ranking position based on level (higher level = better rank)
+        this.userRanking = Math.max(1, 11 - this.metrics.level);
     }
 
     /**
      * Fetches the user data.
-     *
-     * @returns Promise resolved when done.
      */
     async fetchUser(): Promise<void> {
         try {
@@ -139,8 +182,6 @@ export default class CoreUserAboutPage implements OnInit, OnDestroy {
 
     /**
      * Check if current user image has changed.
-     *
-     * @returns Promise resolved when done.
      */
     protected async checkUserImageUpdated(): Promise<void> {
         if (!this.site || !this.site.getInfo() || !this.user) {
@@ -148,16 +189,12 @@ export default class CoreUserAboutPage implements OnInit, OnDestroy {
         }
 
         if (this.userId != this.site.getUserId() || !this.isUserAvatarDirty()) {
-            // Not current user or hasn't changed.
             return;
         }
 
-        // The current user image received is different than the one stored in site info. Assume the image was updated.
-        // Update the site info to get the right avatar in there.
         try {
             await CoreSites.updateSiteInfo(this.site.getId());
         } catch {
-            // Cannot update site info. Assume the profile image is the right one.
             CoreEvents.trigger(CORE_USER_PROFILE_PICTURE_UPDATED, {
                 userId: this.userId,
                 picture: this.user.profileimageurl,
@@ -165,10 +202,8 @@ export default class CoreUserAboutPage implements OnInit, OnDestroy {
         }
 
         if (this.isUserAvatarDirty()) {
-            // The image is still different, this means that the good one is the one in site info.
             await this.refreshUser();
         } else {
-            // Now they're the same, send event to use the right avatar in the rest of the app.
             CoreEvents.trigger(CORE_USER_PROFILE_PICTURE_UPDATED, {
                 userId: this.userId,
                 picture: this.user.profileimageurl,
@@ -201,7 +236,6 @@ export default class CoreUserAboutPage implements OnInit, OnDestroy {
             });
 
             if (editedImageBlob) {
-                // Override the file entry with the edited image.
                 fileEntry = await CoreFile.writeFile(fileEntry.fullPath, editedImageBlob);
             } else {
                 return;
@@ -231,14 +265,14 @@ export default class CoreUserAboutPage implements OnInit, OnDestroy {
 
     /**
      * Refresh the user data.
-     *
-     * @param event Event.
-     * @returns Promise resolved when done.
      */
     async refreshUser(event?: HTMLIonRefresherElement): Promise<void> {
         await CorePromiseUtils.ignoreErrors(CoreUser.invalidateUserCache(this.userId));
 
-        await this.fetchUser();
+        await Promise.all([
+            this.fetchUser(),
+            this.isCurrentUser ? this.refreshMetrics() : Promise.resolve(),
+        ]);
 
         event?.complete();
 
@@ -252,9 +286,76 @@ export default class CoreUserAboutPage implements OnInit, OnDestroy {
     }
 
     /**
+     * Refresh student metrics.
+     */
+    protected async refreshMetrics(): Promise<void> {
+        try {
+            await StudentMetricsService.invalidateMetrics();
+            this.metrics = await StudentMetricsService.getStudentMetrics(this.userId);
+            this.computeDerivedMetrics();
+        } catch (error) {
+            console.warn('Failed to refresh student metrics:', error);
+        }
+    }
+
+    /**
+     * Navigate to grades page.
+     */
+    openGrades(): void {
+        CoreNavigator.navigateToSitePath('/grades');
+    }
+
+    /**
+     * Navigate to private files page.
+     */
+    openFiles(): void {
+        CoreNavigator.navigateToSitePath('/privatefiles');
+    }
+
+    /**
+     * Navigate to reports page.
+     */
+    openReports(): void {
+        CoreNavigator.navigateToSitePath('/reportbuilder');
+    }
+
+    /**
+     * Navigate to preferences page.
+     */
+    openPreferences(): void {
+        CoreNavigator.navigateToSitePath('preferences');
+    }
+
+    /**
+     * Contact site support.
+     */
+    async contactSupport(): Promise<void> {
+        await CoreOpener.openInBrowser('https://tmo.cedia.edu.ec/contacto/');
+    }
+
+    /**
+     * Show account switcher modal.
+     */
+    async switchAccounts(): Promise<void> {
+        const { CoreLoginSitesModalComponent } = await import('@features/login/components/sites-modal/sites-modal');
+
+        await CoreModals.openSideModal({
+            component: CoreLoginSitesModalComponent,
+            cssClass: 'core-modal-lateral core-modal-lateral-sm',
+        });
+    }
+
+    /**
+     * Logout the user.
+     */
+    async logout(): Promise<void> {
+        await CoreSites.logout({
+            forceLogout: true,
+        });
+    }
+
+    /**
      * Check whether the user avatar is not up to date with site info.
-     *
-     * @returns Whether the user avatar differs from site info cache.
      */
     protected isUserAvatarDirty(): boolean {
         if (!this.user || !this.site) {
@@ -269,12 +370,6 @@ export default class CoreUserAboutPage implements OnInit, OnDestroy {
 
     /**
      * Normalize an avatar url regardless of theme.
-     *
-     * Given that the default image is the only one that can be changed per theme, any other url will stay the same. Note that
-     * the values returned by this function may not be valid urls, given that they are intended for string comparison.
-     *
-     * @param avatarUrl Avatar url.
-     * @returns Normalized avatar string (may not be a valid url).
      */
     protected normalizeAvatarUrl(avatarUrl?: string): string {
         if (!avatarUrl) {
@@ -314,8 +409,6 @@ export default class CoreUserAboutPage implements OnInit, OnDestroy {
 
     /**
      * Open a user interest.
-     *
-     * @param interest Interest name.
      */
     openInterest(interest: string): void {
         CoreNavigator.navigateToSitePath('/tag/index', { params: {

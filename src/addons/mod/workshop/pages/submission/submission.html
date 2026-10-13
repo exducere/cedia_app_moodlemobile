@@ -40,19 +40,19 @@
                         <ion-label>
                             @if (canEdit) {
                                 <ion-button expand="block" (click)="editSubmission()">
-                                    <ion-icon name="fas-pen" slot="start" aria-hidden="true" />
+                                    <ion-icon name="cedia-pencil-edit" slot="start" aria-hidden="true" />
                                     {{ 'addon.mod_workshop.editsubmission' | translate }}
                                 </ion-button>
                             }
                             @if (!submission.deleted && canDelete) {
                                 <ion-button expand="block" color="danger" (click)="deleteSubmission()">
-                                    <ion-icon name="fas-trash" slot="start" aria-hidden="true" />
+                                    <ion-icon name="cedia-trash" slot="start" aria-hidden="true" />
                                     {{ 'addon.mod_workshop.deletesubmission' | translate }}
                                 </ion-button>
                             }
                             @if (submission.deleted && canDelete) {
                                 <ion-button expand="block" fill="outline" color="danger" (click)="undoDeleteSubmission()">
-                                    <ion-icon name="fas-rotate-left" slot="start" aria-hidden="true" />
+                                    <ion-icon name="cedia-rotate-left" slot="start" aria-hidden="true" />
                                     {{ 'core.restore' | translate }}
                                 </ion-button>
                             }

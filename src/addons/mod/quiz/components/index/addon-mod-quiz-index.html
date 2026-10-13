@@ -2,12 +2,12 @@
 <core-navbar-buttons slot="end">
     @if (!courseContentsPage) {
         <ion-button fill="clear" (click)="openModuleSummary()" aria-haspopup="true" [ariaLabel]="'core.info' | translate">
-            <ion-icon name="fas-circle-info" slot="icon-only" aria-hidden="true" />
+            <ion-icon name="cedia-information" slot="icon-only" aria-hidden="true" />
         </ion-button>
     } @else {
         <core-context-menu>
             <core-context-menu-item [priority]="5000" [content]="'core.info' | translate" (action)="openModuleSummary()"
-                iconAction="fas-circle-info" />
+                iconAction="cedia-information" />
         </core-context-menu>
     }
 </core-navbar-buttons>
@@ -83,7 +83,7 @@
 
                             @if (gradeOverridden) {
                                 <p class="addon-mod_quiz-grade-overridden-notice">
-                                    <ion-icon name="fas-circle-info" color="info" slot="start" aria-hidden="true" />
+                                    <ion-icon name="cedia-information" color="info" slot="start" aria-hidden="true" />
                                     {{ 'core.course.overriddennotice' | translate }}
                                 </p>
                             }
@@ -148,7 +148,7 @@
                                 <hr>
                                 <ion-button class="ion-text-wrap ion-margin" expand="block" (click)="reviewAttempt(attempt.id)"
                                     fill="outline">
-                                    <ion-icon name="fas-magnifying-glass" slot="start" aria-hidden="true" />
+                                    <ion-icon name="cedia-search" slot="start" aria-hidden="true" />
                                     {{ 'addon.mod_quiz.review' | translate }}
                                 </ion-button>
                             } @else if (attempt.completed && attempt.cannotReviewMessage) {
@@ -156,7 +156,7 @@
                                 <ion-item class="ion-text-wrap addon-mod_quiz-attempt-noreview">
                                     <ion-label>
                                         <p>
-                                            <ion-icon name="fas-circle-info" color="info" slot="start" aria-hidden="true" />
+                                            <ion-icon name="cedia-information" color="info" slot="start" aria-hidden="true" />
                                             {{ attempt.cannotReviewMessage }}
                                         </p>
                                     </ion-label>
@@ -166,7 +166,7 @@
                                 <ion-item class="ion-text-wrap addon-mod_quiz-attempt-finishedoffline">
                                     <ion-label>
                                         <p>
-                                            <ion-icon name="fas-clock" slot="start" aria-hidden="true" />
+                                            <ion-icon name="cedia-clock" slot="start" aria-hidden="true" />
                                             {{ 'addon.mod_quiz.finishedofflinenotice' | translate }}
                                         </p>
                                     </ion-label>

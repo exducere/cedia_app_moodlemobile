@@ -1,45 +1,32 @@
-<ion-item-divider [sticky]="true">
-    <ion-label>
-        <h2>{{ 'addon.block_recentlyaccesseditems.pluginname' | translate }}</h2>
-    </ion-label>
-    <div slot="end">
-        <core-horizontal-scroll-controls #scrollControls [aria-controls]="scrollElementId" />
+<div class="recently-accessed-section">
+    <div class="recently-accessed-header">
+        <h2 class="recently-accessed-title">{{ 'addon.block_recentlyaccesseditems.pluginname' | translate }}</h2>
     </div>
-</ion-item-divider>
-<core-loading [hideUntil]="loaded" placeholderType="row" placeholderWidth="280px" placeholderHeight="66px" [placeholderLimit]="4">
-    <div [id]="scrollElementId" [hidden]="!items || items.length === 0" class="core-horizontal-scroll"
-        (scroll)="scrollControls.updateScrollPosition()">
-        @if (items) {
-            <div (onResize)="scrollControls.updateScrollPosition()" class="flex-row">
-                <div *ngFor="let item of items" class="core-horizontal-scroll-item">
-                    <ion-card>
-                        <ion-item class="core-course-module-handler ion-text-wrap" [detail]="false" (click)="action($event, item)" button>
+
+    <core-loading [hideUntil]="loaded" placeholderType="row" placeholderWidth="110px" placeholderHeight="140px" [placeholderLimit]="4">
+        @if (items && items.length > 0) {
+            <div class="recently-accessed-scroll">
+                @for (item of items; track item.cmid) {
+                    <button class="recently-accessed-item" (click)="action($event, item)">
+                        <div class="recently-accessed-icon-wrapper">
                             @if (item.iconUrl) {
-                                <core-mod-icon slot="start" [modicon]="item.iconUrl" [modname]="item.modname" [componentId]="item.cmid"
-                                    [showAlt]="false" [purpose]="item.purpose" [isBranded]="item.branded" />
+                                <core-mod-icon [modicon]="item.iconUrl" [modname]="item.modname" [componentId]="item.cmid"
+                                    [showAlt]="false" [purpose]="item.purpose" [isBranded]="item.branded"
+                                    [colorize]="false" />
                             }
-                            <ion-label>
-                                <!-- Add the icon title so accessibility tools read it. -->
-                                @if (item.iconTitle) {
-                                    <span class="sr-only">{{ item.iconTitle }}</span>
-                                }
-                                <p class="item-heading">
-                                    <core-format-text [text]="item.name" contextLevel="module" [contextInstanceId]="item.cmid"
-                                        [courseId]="item.courseid" />
-                                </p>
-                                <p>
-                                    <core-format-text [text]="item.coursename" contextLevel="course" [contextInstanceId]="item.courseid" />
-                                </p>
-                            </ion-label>
-                        </ion-item>
-                    </ion-card>
-                </div>
+                        </div>
+                        <span class="recently-accessed-name">
+                            <core-format-text [text]="item.name" contextLevel="module" [contextInstanceId]="item.cmid"
+                                [courseId]="item.courseid" />
+                        </span>
+                    </button>
+                }
             </div>
         }
-    </div>
 
-    @if (items.length <= 0) {
-        <core-empty-box image="assets/img/icons/activities.svg" [message]="'addon.block_recentlyaccesseditems.noitems' | translate" />
-    }
-
-</core-loading>
+        @if (items.length <= 0) {
+            <core-empty-box image="assets/img/icons/activities.svg"
+                [message]="'addon.block_recentlyaccesseditems.noitems' | translate" />
+        }
+    </core-loading>
+</div>

@@ -36,7 +36,7 @@
     </ion-grid>
     <core-loading [hideUntil]="loaded && !searching">
         @if (!cloud || !cloud!.tags || !cloud.tags.length) {
-            <core-empty-box icon="fas-tags" [message]="'core.tag.notagsfound' | translate: {$a: query}" role="alert" />
+            <core-empty-box icon="cedia-tags" [message]="'core.tag.notagsfound' | translate: {$a: query}" role="alert" />
         } @else {
             <div class="ion-text-center core-tag-cloud">
                 <ion-badge *ngFor="let tag of cloud!.tags" (click)="openTag(tag)" class="ion-text-wrap">

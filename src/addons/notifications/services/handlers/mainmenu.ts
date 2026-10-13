@@ -39,7 +39,7 @@ export class AddonNotificationsMainMenuHandlerService implements CoreMainMenuHan
     priority = 600;
 
     protected handlerData: CoreMainMenuHandlerData = {
-        icon: 'fas-bell',
+        icon: 'cedia-notification',
         title: 'addon.notifications.notifications',
         page: ADDONS_NOTICATIONS_MAIN_PAGE_NAME,
         class: 'addon-notifications-handler',

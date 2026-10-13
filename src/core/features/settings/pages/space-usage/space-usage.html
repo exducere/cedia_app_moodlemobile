@@ -27,7 +27,7 @@
                 <ng-template #siteItem let-site="site">
                     <ion-button fill="clear" color="danger" slot="end" (click)="deleteSiteStorage(site)"
                         [hidden]="site.spaceUsage <= 0 && !site.hasCacheEntries">
-                        <ion-icon name="fas-trash" slot="icon-only"
+                        <ion-icon name="cedia-trash" slot="icon-only"
                             [attr.aria-label]="'addon.storagemanager.deletedatafrom' | translate: { name: site.siteName }" />
                     </ion-button>
                 </ng-template>

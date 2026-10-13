@@ -11,7 +11,7 @@
             @if (participants.empty && !searchInProgress && !searchQuery) {
                 <core-empty-box icon="far-user" [message]="'core.user.noparticipants' | translate" />
             } @else if (participants.empty && !searchInProgress && searchQuery) {
-                <core-empty-box icon="fas-magnifying-glass" [message]="'core.noresults' | translate"
+                <core-empty-box icon="cedia-search" [message]="'core.noresults' | translate"
                     [attr.role]="searchQuery ? 'alert' : null" />
             } @else if (!participants.empty) {
                 <ion-list>

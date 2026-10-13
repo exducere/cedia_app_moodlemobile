@@ -82,8 +82,14 @@ export default class CoreLoginSitePage implements OnInit {
     enteredSiteUrl?: CoreLoginSiteInfoExtended;
     siteFinderSettings!: CoreLoginSiteFinderSettings;
     appName = CoreConstants.CONFIG.appname;
+    appVersion = CoreConstants.CONFIG.versionname;
+    cediaAulas: CediaAula[] = [];
+    loadingAulas = true;
 
     protected formBuilder = inject(FormBuilder);
+
+    protected readonly CEDIA_AULAS_API = 'https://laravel-api-rest-platform-production.up.railway.app/api/v1/cediaaulas';
+    protected readonly CEDIA_AULAS_TOKEN = 'mf9490vXiD8HXhIpUlpmOGG4t507iOCqFS49NIkI441d2f38';
 
     /**
      * @inheritdoc
@@ -151,6 +157,34 @@ export default class CoreLoginSitePage implements OnInit {
         }, 1000);
 
         this.showKeyboard = !!CoreNavigator.getRouteBooleanParam('showKeyboard');
+
+        this.loadCediaAulas();
+    }
+
+    /**
+     * Load CEDIA virtual classrooms from the external API.
+     */
+    protected async loadCediaAulas(): Promise<void> {
+        try {
+            const response = await fetch(this.CEDIA_AULAS_API, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${this.CEDIA_AULAS_TOKEN}`,
+                    'Accept': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+
+            const json: { data: CediaAula[] } = await response.json();
+            this.cediaAulas = (json.data ?? []).filter(a => a.state === 1);
+        } catch (error) {
+            console.warn('Failed to load CEDIA aulas:', error);
+        } finally {
+            this.loadingAulas = false;
+        }
     }
 
     /**
@@ -290,6 +324,16 @@ export default class CoreLoginSitePage implements OnInit {
             component: CoreLoginSiteOnboardingComponent,
             cssClass: 'core-modal-fullscreen',
         });
+    }
+
+    /**
+     * Connect directly to a predefined campus URL.
+     *
+     * @param url The campus URL to connect to.
+     * @returns Promise resolved when done.
+     */
+    async connectToCampus(url: string): Promise<void> {
+        await this.connect(url);
     }
 
     /**
@@ -646,6 +690,15 @@ export default class CoreLoginSitePage implements OnInit {
     }
 
     /**
+     * Open contact information or email.
+     */
+    async openContact(): Promise<void> {
+        const email = 'soporte@cedia.edu.ec';
+        const subject = encodeURIComponent('Consulta - App CEDIA');
+        window.open(`mailto:${email}?subject=${subject}`, '_system');
+    }
+
+    /**
      * Check whether site URL should be displayed.
      *
      * @param siteUrl Site URL.
@@ -655,6 +708,17 @@ export default class CoreLoginSitePage implements OnInit {
         return CoreSitesFactory.makeUnauthenticatedSite(siteUrl).shouldDisplayInformativeLinks();
     }
 
+}
+
+/**
+ * CEDIA virtual classroom from external API.
+ */
+interface CediaAula {
+    id: number;
+    title: string;
+    url: string;
+    description: string;
+    state: number;
 }
 
 /**

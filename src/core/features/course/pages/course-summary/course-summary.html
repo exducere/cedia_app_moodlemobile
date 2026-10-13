@@ -173,7 +173,7 @@
                 } @else {
                     <ion-card class="core-info-card ion-text-wrap">
                         <ion-item>
-                            <ion-icon name="fas-circle-info" slot="start" aria-hidden="true" />
+                            <ion-icon name="cedia-information" slot="start" aria-hidden="true" />
                             <ion-label>{{ 'core.courses.notenrollable' | translate }}</ion-label>
                         </ion-item>
                     </ion-card>
@@ -182,7 +182,7 @@
             }
             @if (!isModal && canAccessCourse) {
                 <ion-button (click)="openCourse()" expand="block" fill="outline" class="ion-text-wrap">
-                    <ion-icon name="fas-eye" slot="start" aria-hidden="true" />
+                    <ion-icon name=cedia-view slot="start" aria-hidden="true" />
                     {{ 'core.course.viewcourse' | translate }}
                 </ion-button>
             }

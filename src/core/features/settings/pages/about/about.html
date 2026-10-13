@@ -14,20 +14,20 @@
 <ion-content>
     <ion-list class="list-item-limited-width">
         <ion-item button class="ion-text-wrap" (click)="openPage('licenses')" [detail]="true">
-            <ion-icon name="far-copyright" slot="start" aria-hidden="true" />
+            <ion-icon name="cedia-copyright" slot="start" aria-hidden="true" />
             <ion-label>{{ 'core.settings.opensourcelicenses' | translate }}</ion-label>
         </ion-item>
         @if (privacyPolicy) {
             <ion-item class="ion-text-wrap" button core-link [autoLogin]="false" [href]="privacyPolicy" [detail]="true"
                 detailIcon="open-outline">
-                <ion-icon name="fas-user-shield" slot="start" aria-hidden="true" />
+                <ion-icon name="cedia-user-shield" slot="start" aria-hidden="true" />
                 <ion-label>{{ 'core.settings.privacypolicy' | translate }}</ion-label>
             </ion-item>
         }
         @if (a11yStatement) {
             <ion-item class="ion-text-wrap" button core-link [autoLogin]="false" [href]="a11yStatement" [detail]="true"
                 detailIcon="open-outline">
-                <ion-icon name="fas-universal-access" slot="start" aria-hidden="true" />
+                <ion-icon name="cedia-universal-access" slot="start" aria-hidden="true" />
                 <ion-label>{{ 'core.settings.accessstatement' | translate }}</ion-label>
             </ion-item>
         }

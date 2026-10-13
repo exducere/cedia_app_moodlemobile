@@ -30,7 +30,7 @@ import { CoreUpdateNonReactiveAttributesDirective } from '@directives/update-non
  * Example using modal:
  *
  * <core-combobox interface="modal" (selectionChange)="selectedChanged($event)" [modalOptions]="modalOptions"
- *      icon="fas-folder" [label]="'core.course.section' | translate">
+ *      icon="cedia-folder" [label]="'core.course.section' | translate">
  *      <span slot="text">selection</span>
  * </core-combobox>
  *

@@ -24,14 +24,14 @@
                 <h2 class="big" [id]="'core-section-name-' + section.id">
                     <core-format-text [text]="section.name" contextLevel="course" [contextInstanceId]="course.id" />
                     @if (section.availabilityinfo) {
-                        <ion-icon name="fas-lock" [attr.aria-label]="'core.restricted' | translate" />
+                        <ion-icon name="cedia-circle-lock" [attr.aria-label]="'core.restricted' | translate" />
                     }
                 </h2>
             }
             @if (section.visible === 0 && section.uservisible !== false) {
                 <div>
                     <ion-badge color="secondary" class="ion-text-wrap">
-                        <ion-icon name="far-eye-slash" aria-hidden="true" />
+                        <ion-icon name="cedia-view-off" aria-hidden="true" />
                         {{ 'core.course.hiddenfromstudents' | translate }}
                     </ion-badge>
                 </div>
@@ -55,7 +55,7 @@
         <ion-item class="ion-text-wrap section-summary">
             <ion-label>
                 <ion-chip>
-                    <ion-icon name="fas-lock" [attr.aria-label]="'core.restricted' | translate" />
+                    <ion-icon name="cedia-circle-lock" [attr.aria-label]="'core.restricted' | translate" />
                     <ion-label>
                         <core-format-text [text]="section.availabilityinfo" contextLevel="course" [contextInstanceId]="course.id" />
                     </ion-label>

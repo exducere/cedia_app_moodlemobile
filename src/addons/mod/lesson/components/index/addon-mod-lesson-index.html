@@ -2,12 +2,12 @@
 <core-navbar-buttons slot="end">
     @if (!courseContentsPage) {
         <ion-button fill="clear" (click)="openModuleSummary()" aria-haspopup="true" [ariaLabel]="'core.info' | translate">
-            <ion-icon name="fas-circle-info" slot="icon-only" aria-hidden="true" />
+            <ion-icon name="cedia-information" slot="icon-only" aria-hidden="true" />
         </ion-button>
     } @else {
         <core-context-menu>
             <core-context-menu-item [priority]="5000" [content]="'core.info' | translate" (action)="openModuleSummary()"
-                iconAction="fas-circle-info" />
+                iconAction="cedia-information" />
         </core-context-menu>
     }
 </core-navbar-buttons>
@@ -27,7 +27,7 @@
                 @if (lesson && preventReasons.length) {
                     <ion-card class="core-info-card">
                         <ion-item>
-                            <ion-icon name="fas-circle-info" slot="start" aria-hidden="true" />
+                            <ion-icon name="cedia-information" slot="start" aria-hidden="true" />
                             <ion-label [innerHTML]="preventReasons[0].message" />
                         </ion-item>
                     </ion-card>
@@ -76,13 +76,13 @@
 
                         <!-- No lesson retakes. -->
                         @if (lesson && !overview && selectedGroupEmptyMessage) {
-                            <core-empty-box icon="fas-chart-bar">
+                            <core-empty-box icon="cedia-analytics">
                                 <core-format-text [text]="selectedGroupEmptyMessage" contextLevel="course" [contextInstanceId]="courseId"
                                     [wsNotFiltered]="true" />
                             </core-empty-box>
                         }
                         @if (!overview && !selectedGroupEmptyMessage) {
-                            <core-empty-box icon="fas-chart-bar" [message]="'addon.mod_lesson.nolessonattempts' | translate" />
+                            <core-empty-box icon="cedia-analytics" [message]="'addon.mod_lesson.nolessonattempts' | translate" />
                         }
 
                         <!-- General statistics for the current group. -->
@@ -343,7 +343,7 @@
                 </ion-button>
             } @else {
                 <ion-button class="ion-text-wrap ion-margin" expand="block" fill="outline" (click)="start(false)">
-                    <ion-icon name="fas-magnifying-glass" slot="start" aria-hidden="true" />
+                    <ion-icon name="cedia-search" slot="start" aria-hidden="true" />
                     {{ 'addon.mod_lesson.preview' | translate }}
                 </ion-button>
             }

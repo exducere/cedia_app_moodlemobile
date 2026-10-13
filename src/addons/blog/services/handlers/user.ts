@@ -67,7 +67,7 @@ export class AddonBlogUserHandlerService implements CoreUserProfileHandler {
      */
     getDisplayData(): CoreUserProfileHandlerData {
         return {
-            icon: 'far-newspaper',
+            icon: 'cedia-news',
             title: 'addon.blog.blogentries',
             class: 'addon-blog-handler',
             action: (event, user, context, contextId): void => {

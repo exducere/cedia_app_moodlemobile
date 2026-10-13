@@ -3,22 +3,22 @@
     <core-context-menu>
         @if (h5pActivity && h5pActivity.enabletracking && accessInfo && !accessInfo.canreviewattempts) {
             <core-context-menu-item [priority]="1000" [content]="'addon.mod_h5pactivity.attempts_report' | translate"
-                (action)="viewMyAttempts()" iconAction="fas-chart-bar" />
+                (action)="viewMyAttempts()" iconAction="cedia-analytics" />
         }
         @if (canViewAllAttempts) {
             <core-context-menu-item [priority]="1000" [content]="'addon.mod_h5pactivity.attempts_report' | translate"
-                (action)="viewAllAttempts()" iconAction="fas-chart-bar" />
+                (action)="viewAllAttempts()" iconAction="cedia-analytics" />
         }
 
         @if (courseContentsPage) {
             <core-context-menu-item [priority]="5000" [content]="'core.info' | translate" (action)="openModuleSummary()"
-                iconAction="fas-circle-info" />
+                iconAction="cedia-information" />
         }
     </core-context-menu>
 
     @if (!courseContentsPage) {
         <ion-button fill="clear" (click)="openModuleSummary()" aria-haspopup="true" [ariaLabel]="'core.info' | translate">
-            <ion-icon name="fas-circle-info" slot="icon-only" aria-hidden="true" />
+            <ion-icon name="cedia-information" slot="icon-only" aria-hidden="true" />
         </ion-button>
     }
 </core-navbar-buttons>
@@ -50,7 +50,7 @@
     @if (accessInfo && !accessInfo.cansubmit) {
         <ion-card class="core-info-card">
             <ion-item>
-                <ion-icon name="fas-circle-info" slot="start" aria-hidden="true" />
+                <ion-icon name="cedia-information" slot="start" aria-hidden="true" />
                 <ion-label>
                     {{ 'addon.mod_h5pactivity.previewmode' | translate }}
                 </ion-label>

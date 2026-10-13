@@ -57,7 +57,7 @@ export class AddonPrivateFilesUserHandlerService implements CoreUserProfileHandl
      */
     getDisplayData(): CoreUserProfileHandlerData {
         return {
-            icon: 'fas-folder',
+            icon: 'cedia-folder',
             title: 'addon.privatefiles.files',
             class: 'addon-privatefiles-handler',
             action: (event): void => {

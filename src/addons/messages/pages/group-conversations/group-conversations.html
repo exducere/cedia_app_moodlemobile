@@ -8,10 +8,10 @@
         </ion-title>
         <ion-buttons slot="end">
             <ion-button fill="clear" (click)="gotoSearch()" [ariaLabel]="'addon.messages.searchcombined' | translate">
-                <ion-icon name="fas-magnifying-glass" slot="icon-only" aria-hidden="true" />
+                <ion-icon name="cedia-search" slot="icon-only" aria-hidden="true" />
             </ion-button>
             <ion-button (click)="gotoSettings()" [ariaLabel]="'addon.messages.messagepreferences' | translate">
-                <ion-icon name="fas-gear" slot="icon-only" aria-hidden="true" />
+                <ion-icon name="cedia-gear-complex" slot="icon-only" aria-hidden="true" />
             </ion-button>
             <!-- Add an empty context menu so split view pages can add items, otherwise the menu disappears in some cases. -->
             <core-context-menu />
@@ -28,7 +28,7 @@
         <core-loading [hideUntil]="loaded" [message]="loadingMessage" placeholderType="listwithavatar">
             <ion-list>
                 <ion-item class="ion-text-wrap" (click)="gotoContacts()" [detail]="true" button>
-                    <ion-icon name="fas-address-book" slot="start" aria-hidden="true" />
+                    <ion-icon name="cedia-address-book" slot="start" aria-hidden="true" />
                     <ion-label>
                         <p class="item-heading">{{ 'addon.messages.contacts' | translate }}</p>
                     </ion-label>

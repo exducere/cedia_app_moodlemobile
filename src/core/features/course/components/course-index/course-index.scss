@@ -17,7 +17,7 @@ ion-item.item {
     }
 
     &.item-current {
-        --background: var(--primary-tint);
+        --background: rgba(41, 198, 255, 0.15);
         --color: var(--gray-900);
         border: 0px;
         ion-label h2 {
@@ -26,7 +26,7 @@ ion-item.item {
     }
 
     &.item-hightlighted {
-        @include border-start(var(--selected-item-border-width), solid,  var(--selected-item-color));
+        @include border-start(var(--selected-item-border-width), solid, #29C6FF);
     }
 
     &.divider.section {
@@ -34,11 +34,11 @@ ion-item.item {
 
         &.item-current {
             ion-icon.expandable-status-icon {
-                color: var(--primary-contrast);
+                color: #001f3f;
 
                 &:hover {
-                    background: var(--primary-shade);
-                    color: var(--gray-100);
+                    background: #29C6FF;
+                    color: #001f3f;
                 }
             }
         }
@@ -48,7 +48,7 @@ ion-item.item {
             margin: 3px;
             border-radius: 50%;
             &:hover {
-                background: var(--secondary);
+                background: rgba(41, 198, 255, 0.2);
             }
         }
 
@@ -110,17 +110,17 @@ div.core-course-index-subsection {
 :host-context(:root.dark) {
     ion-item.item {
         &.item-current {
-            --background: var(--primary-shade);
+            --background: rgba(41, 198, 255, 0.2);
             --color: var(--white);
         }
 
         &.divider.section {
             ion-icon.expandable-status-icon {
-                color: var(--white);
+                color: #29C6FF;
 
                 &:hover {
-                    background: var(--primary-tint);
-                    color: var(--gray-900);
+                    background: rgba(41, 198, 255, 0.25);
+                    color: #001f3f;
                 }
             }
         }

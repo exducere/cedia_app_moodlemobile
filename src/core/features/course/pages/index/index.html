@@ -12,7 +12,7 @@
         <ion-buttons slot="end">
             @if (course?.format !== 'singleactivity') {
                 <ion-button fill="clear" (click)="openCourseSummary()" [ariaLabel]="'core.course.coursesummary' | translate">
-                    <ion-icon name="fas-circle-info" slot="icon-only" aria-hidden="true" />
+                    <ion-icon name="cedia-information" slot="icon-only" aria-hidden="true" />
                 </ion-button>
 
                 <!-- Add an empty context menu so tab pages can add items, otherwise the menu disappears in some cases. -->
@@ -20,7 +20,7 @@
             } @else {
                 <core-context-menu>
                     <core-context-menu-item [priority]="1" [content]="'core.course.coursesummary' | translate"
-                        (action)="openCourseSummary()" iconAction="fas-graduation-cap" />
+                        (action)="openCourseSummary()" iconAction="cedia-graduation" />
                 </core-context-menu>
             }
         </ion-buttons>

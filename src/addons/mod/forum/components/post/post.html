@@ -11,7 +11,7 @@
                                     @if (discussion.pinned) {
                                         <ion-icon name="fas-map-pin" [attr.aria-label]="'addon.mod_forum.discussionpinned' | translate" />
                                     } @else if (discussion.starred) {
-                                        <ion-icon name="fas-star" class="addon-forum-star"
+                                        <ion-icon name="cedia-star" class="addon-forum-star"
                                             [attr.aria-label]="'addon.mod_forum.favourites' | translate" />
                                     }
                                 }
@@ -55,7 +55,7 @@
                                 <p>{{post.timecreated * 1000 | coreFormatDate: "strftimerecentfull"}}</p>
                             } @else {
                                 <p>
-                                    <ion-icon name="fas-clock" aria-hidden="true" /> {{ 'core.notsent' | translate }}
+                                    <ion-icon name="cedia-clock" aria-hidden="true" /> {{ 'core.notsent' | translate }}
                                 </p>
                             }
                         </div>

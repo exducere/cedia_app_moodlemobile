@@ -15,7 +15,7 @@
         <ion-buttons slot="end">
             @if (selectFilesEnabled() && selectedFiles.length > 0) {
                 <ion-button fill="clear" (click)="deleteSelectedFiles(true)" [ariaLabel]="'core.delete' | translate" color="danger">
-                    <ion-icon slot="icon-only" name="fas-trash" aria-hidden="true" />
+                    <ion-icon slot="icon-only" name="cedia-trash" aria-hidden="true" />
                 </ion-button>
             }
         </ion-buttons>
@@ -60,7 +60,7 @@
                         @if (file.isdir) {
                             <ion-card>
                                 <ion-item button class="ion-text-wrap item-file item-directory" (click)="openFolder(file)" [detail]="true">
-                                    <ion-icon name="fas-folder" slot="start" [attr.aria-label]="'core.folder' | translate" />
+                                    <ion-icon name="cedia-folder" slot="start" [attr.aria-label]="'core.folder' | translate" />
                                     <ion-label>{{file.filename}}</ion-label>
                                 </ion-item>
                             </ion-card>

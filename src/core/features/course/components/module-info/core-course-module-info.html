@@ -6,7 +6,7 @@
             <core-format-text [text]="module.name" contextLevel="module" [component]="component" [componentId]="componentId"
                 [contextInstanceId]="module.id" [courseId]="courseId" />
             @if (module.visible === 0 || module.uservisible === false) {
-                <ion-icon name="fas-lock" [attr.aria-label]="'core.restricted' | translate" />
+                <ion-icon name="cedia-circle-lock" [attr.aria-label]="'core.restricted' | translate" />
             }
         </h1>
         <ng-content select="[title]" />
@@ -35,7 +35,7 @@
     <!-- Availability info space. -->
     @if (showAvailabilityInfo && module.availabilityinfo) {
         <div class="core-module-availabilityinfo core-module-info-box-section">
-            <ion-icon name="fas-lock" [attr.aria-label]="'core.restricted' | translate" />
+            <ion-icon name="cedia-circle-lock" [attr.aria-label]="'core.restricted' | translate" />
             <core-format-text [text]="module.availabilityinfo" contextLevel="module" [contextInstanceId]="module.id"
                 [courseId]="module.course" />
         </div>

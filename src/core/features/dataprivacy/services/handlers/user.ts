@@ -48,7 +48,7 @@ export class CoreDataPrivacyUserHandlerService implements CoreUserProfileHandler
     getDisplayData(): CoreUserProfileHandlerData {
         return {
             class: 'core-data-privacy',
-            icon: 'fas-user-shield',
+            icon: 'cedia-user-shield',
             title: 'core.dataprivacy.pluginname',
             action: async (event): Promise<void> => {
                 event.preventDefault();

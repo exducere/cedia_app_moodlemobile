@@ -6,162 +6,260 @@
         <ion-title>
             <h1>{{ 'core.user.profile' | translate }}</h1>
         </ion-title>
+
     </ion-toolbar>
 </ion-header>
+
 <ion-content class="limited-width">
     <ion-refresher slot="fixed" [disabled]="!userLoaded" (ionRefresh)="refreshUser($event.target)">
         <ion-refresher-content pullingText="{{ 'core.pulltorefresh' | translate }}" />
     </ion-refresher>
+
     <core-loading [hideUntil]="userLoaded" placeholderType="column" placeholderHeight="48px">
         @if (user) {
-            <ion-list>
-                <ion-item class="ion-text-center core-user-profile-maininfo ion-text-wrap" [lines]="user.description ? 'none' : 'full'">
-                    <ion-label>
-                        <core-user-avatar [user]="user" [userId]="user.id" [linkProfile]="false" [checkOnline]="!canChangeProfilePicture">
-                            @if (canChangeProfilePicture) {
-                                <ion-button class="edit-avatar" (click)="changeProfilePicture()"
-                                    [ariaLabel]="'core.user.newpicture' | translate" fill="clear">
-                                    <ion-icon slot="icon-only" name="fas-pen" aria-hidden="true" />
-                                </ion-button>
-                            }
-                        </core-user-avatar>
-                        <h2>{{ user.fullname }}</h2>
-                    </ion-label>
-                </ion-item>
 
-                @if (user.description) {
-                    <ion-item class="ion-text-wrap" lines="full">
-                        <ion-label>
-                            <p>
-                                <core-format-text [text]="user.description" contextLevel="user" [contextInstanceId]="user.id"
-                                    [courseId]="courseId" />
-                            </p>
-                        </ion-label>
-                    </ion-item>
+            <!-- PROFILE HERO SECTION -->
+            <div class="profile-hero">
+                <div class="avatar-wrapper">
+                    <core-user-avatar [user]="user" [userId]="user.id" [linkProfile]="false" [checkOnline]="false" />
+                    @if (canChangeProfilePicture) {
+                        <ion-button class="edit-avatar" (click)="changeProfilePicture()"
+                            [attr.aria-label]="'core.user.newpicture' | translate" fill="clear">
+                            <ion-icon slot="icon-only" name="cedia-pencil-edit" aria-hidden="true" />
+                        </ion-button>
+                    }
+                    @if (metricsLoaded && metrics) {
+                        <div class="level-badge">
+                            <span class="level-label">NIVEL</span>
+                            <span class="level-value">Nv.{{ metrics.level }}</span>
+                        </div>
+                    }
+                </div>
+                <h2 class="user-fullname">{{ user.fullname }}</h2>
+                @if (user.department) {
+                    <p class="user-role">{{ user.department }}</p>
+                } @else if (user.email) {
+                    <p class="user-role">{{ user.email }}</p>
                 }
+            </div>
 
-                @if (hasContact) {
-                    <ion-item-group>
-                        <ion-item-divider>
-                            <ion-label>
-                                <h3>{{ 'core.user.contact' | translate}}</h3>
-                            </ion-label>
-                        </ion-item-divider>
-                        @if (user.email) {
-                            <ion-item class="ion-text-wrap">
-                                <ion-label>
-                                    <p class="item-heading">{{ 'core.user.email' | translate }}</p>
-                                    <p><a class="core-anchor" href="mailto:{{user.email}}" core-link [autoLogin]="false"
-                                            [showBrowserWarning]="false">
-                                            {{ user.email }}
-                                        </a></p>
-                                </ion-label>
-                            </ion-item>
-                        }
-                        @if (user.country) {
-                            <ion-item class="ion-text-wrap">
-                                <ion-label>
-                                    <p class="item-heading">{{ 'core.user.country' | translate}}</p>
-                                    <p>{{ user.country }}</p>
-                                </ion-label>
-                            </ion-item>
-                        }
-                        @if (user.city) {
-                            <ion-item class="ion-text-wrap">
-                                <ion-label>
-                                    <p class="item-heading">{{ 'core.user.city' | translate}}</p>
-                                    <p>{{ user.city }}</p>
-                                </ion-label>
-                            </ion-item>
-                        }
-                        @if (displayTimezone && user.timezone) {
-                            <ion-item class="ion-text-wrap">
-                                <ion-label>
-                                    <p class="item-heading">{{ 'core.timezone' | translate}}</p>
-                                    <p>{{ user.timezone }}</p>
-                                </ion-label>
-                            </ion-item>
-                        }
-                        @if (user.phone1) {
-                            <ion-item class="ion-text-wrap">
-                                <ion-label>
-                                    <p class="item-heading">{{ 'core.user.phone1' | translate}}</p>
-                                    <p><a class="core-anchor" href="tel:{{user.phone1}}" core-link [autoLogin]="false"
-                                            [showBrowserWarning]="false">
-                                            {{ user.phone1 }}
-                                        </a></p>
-                                </ion-label>
-                            </ion-item>
-                        }
-                        @if (user.phone2) {
-                            <ion-item class="ion-text-wrap">
-                                <ion-label>
-                                    <p class="item-heading">{{ 'core.user.phone2' | translate}}</p>
-                                    <p><a class="core-anchor" href="tel:{{user.phone2}}" core-link [autoLogin]="false"
-                                            [showBrowserWarning]="false">
-                                            {{ user.phone2 }}
-                                        </a></p>
-                                </ion-label>
-                            </ion-item>
-                        }
+            <!-- STATS GRID 2x2 -->
+            @if (metricsLoaded && metrics) {
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon stat-icon-blue">
+                                <ion-icon name="cedia-course-stroke-rounded" aria-hidden="true"></ion-icon>
+                            </div>
+                            <span class="stat-label">{{ 'core.user.courses' | translate }}</span>
+                        </div>
+                        <div class="stat-value">{{ metrics.totalCourses }}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon stat-icon-blue">
+                                <ion-icon name="cedia-analytics" aria-hidden="true"></ion-icon>
+                            </div>
+                            <span class="stat-label">{{ 'core.user.average' | translate }}</span>
+                        </div>
+                        <div class="stat-value">{{ metrics.hasGrades ? metrics.averageGrade : '—' }}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon stat-icon-blue">
+                                <ion-icon name="cedia-clock" aria-hidden="true"></ion-icon>
+                            </div>
+                            <span class="stat-label">{{ 'core.user.hours' | translate }}</span>
+                        </div>
+                        <div class="stat-value">{{ estimatedHours }}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon stat-icon-blue">
+                                <ion-icon name="cedia-award" aria-hidden="true"></ion-icon>
+                            </div>
+                            <span class="stat-label">{{ 'core.user.ranking' | translate }}</span>
+                        </div>
+                        <div class="stat-value">#{{ userRanking }}</div>
+                    </div>
+                </div>
+            } @else if (!metricsLoaded) {
+                <div class="metrics-loading">
+                    <ion-spinner name="crescent"></ion-spinner>
+                </div>
+            }
 
+            <!-- CONTACT SECTION -->
+            @if (hasContact) {
+                <div class="section-label">{{ 'core.user.contact' | translate }}</div>
+                <div class="section-card contact-card">
+                    @if (user.country) {
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <ion-icon name="fas-map-marker-alt" aria-hidden="true"></ion-icon>
+                            </div>
+                            <div class="contact-info">
+                                <span class="contact-label">{{ 'core.user.country' | translate }}</span>
+                                <span class="contact-value">{{ user.country }}</span>
+                            </div>
+                        </div>
+                    }
+                    @if (user.city) {
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <ion-icon name="cedia-school" aria-hidden="true"></ion-icon>
+                            </div>
+                            <div class="contact-info">
+                                <span class="contact-label">{{ 'core.user.city' | translate }}</span>
+                                <span class="contact-value">{{ user.city }}</span>
+                            </div>
+                        </div>
+                    }
+                    @if (displayTimezone && user.timezone) {
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <ion-icon name="cedia-clock" aria-hidden="true"></ion-icon>
+                            </div>
+                            <div class="contact-info">
+                                <span class="contact-label">{{ 'core.timezone' | translate }}</span>
+                                <span class="contact-value">{{ user.timezone }}</span>
+                            </div>
+                        </div>
+                    }
+                    @if (user.phone1) {
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <ion-icon name="fas-phone" aria-hidden="true"></ion-icon>
+                            </div>
+                            <div class="contact-info">
+                                <span class="contact-label">{{ 'core.user.phone1' | translate }}</span>
+                                <a class="contact-value contact-link" href="tel:{{user.phone1}}" core-link
+                                    [autoLogin]="false" [showBrowserWarning]="false">{{ user.phone1 }}</a>
+                            </div>
+                        </div>
+                    }
+                    @if (user.phone2) {
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <ion-icon name="fas-mobile-alt" aria-hidden="true"></ion-icon>
+                            </div>
+                            <div class="contact-info">
+                                <span class="contact-label">{{ 'core.user.phone2' | translate }}</span>
+                                <a class="contact-value contact-link" href="tel:{{user.phone2}}" core-link
+                                    [autoLogin]="false" [showBrowserWarning]="false">{{ user.phone2 }}</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
 
-                        @if (canShowDepartment) {
+            <!-- MENU LINKS (only for current user) -->
+            @if (isCurrentUser) {
+                <div class="section-label">Academia y Configuración</div>
+                <div class="section-card menu-card">
+                    <ion-list lines="none">
+                        <ion-item button (click)="openGrades()" [detail]="true" class="menu-item">
+                            <div class="menu-icon-box menu-icon-blue1" slot="start">
+                                <ion-icon name="cedia-star" aria-hidden="true"></ion-icon>
+                            </div>
+                            <ion-label>{{ 'core.user.grades' | translate }}</ion-label>
+                        </ion-item>
+                        <div class="menu-divider"></div>
+                        <ion-item button (click)="openReports()" [detail]="true" class="menu-item">
+                            <div class="menu-icon-box menu-icon-blue2" slot="start">
+                                <ion-icon name="cedia-invoice" aria-hidden="true"></ion-icon>
+                            </div>
+                            <ion-label>{{ 'core.user.reports' | translate }}</ion-label>
+                        </ion-item>
+                        <div class="menu-divider"></div>
+                        <ion-item button (click)="openPreferences()" [detail]="true" class="menu-item">
+                            <div class="menu-icon-box menu-icon-blue3" slot="start">
+                                <ion-icon name="cedia-gear-complex" aria-hidden="true"></ion-icon>
+                            </div>
+                            <ion-label>{{ 'core.user.preferences' | translate }}</ion-label>
+                        </ion-item>
+                        <div class="menu-divider"></div>
+                        <ion-item button (click)="contactSupport()" [detail]="true" class="menu-item">
+                            <div class="menu-icon-box menu-icon-blue4" slot="start">
+                                <ion-icon name="cedia-question" aria-hidden="true"></ion-icon>
+                            </div>
+                            <ion-label>{{ 'core.user.support' | translate }}</ion-label>
+                        </ion-item>
+                    </ion-list>
+                </div>
 
-                            @if (user.institution) {
-                                <ion-item class="ion-text-wrap">
-                                    <ion-label>
-                                        <p class="item-heading">{{ 'core.user.institution' | translate }}</p>
-                                        <p>{{ user.institution }}</p>
-                                    </ion-label>
-                                </ion-item>
-                            }
-                            @if (user.department) {
-                                <ion-item class="ion-text-wrap">
-                                    <ion-label>
-                                        <p class="item-heading">{{ 'core.user.department' | translate }}</p>
-                                        <p>{{ user.department }}</p>
-                                    </ion-label>
-                                </ion-item>
-                            }
-                            @if (user.idnumber) {
-                                <ion-item class="ion-text-wrap">
-                                    <ion-label>
-                                        <p class="item-heading">{{ 'core.user.idnumber' | translate }}</p>
-                                        <p>{{ user.idnumber }}</p>
-                                    </ion-label>
-                                </ion-item>
-                            }
+                <!-- SWITCH & LOGOUT -->
+                <div class="section-card menu-card secondary-actions-card">
+                    <ion-list lines="none">
+                        <ion-item button (click)="switchAccounts()" [detail]="true" class="menu-item">
+                            <div class="menu-icon-box menu-icon-gray" slot="start">
+                                <ion-icon name="cedia-user-switch" aria-hidden="true"></ion-icon>
+                            </div>
+                            <ion-label>{{ 'core.mainmenu.switchaccount' | translate }}</ion-label>
+                        </ion-item>
+                        <div class="menu-divider"></div>
+                        <ion-item button (click)="logout()" class="menu-item menu-item-danger">
+                            <div class="menu-icon-box menu-icon-red" slot="start">
+                                <ion-icon name="cedia-login" aria-hidden="true"></ion-icon>
+                            </div>
+                            <ion-label>{{ 'core.mainmenu.logout' | translate }}</ion-label>
+                        </ion-item>
+                    </ion-list>
+                </div>
+            }
 
-                        }
-                    </ion-item-group>
-                }
-                @if (hasDetails) {
-                    <ion-item-group>
-                        <ion-item-divider>
-                            <ion-label>
-                                <h3>{{ 'core.userdetails' | translate}}</h3>
-                            </ion-label>
-                        </ion-item-divider>
-                        @if (interests) {
-                            <ion-item class="ion-text-wrap core-user-profile-interests">
-                                <ion-label>
-                                    <p class="item-heading">{{ 'core.user.interests' | translate}}</p>
-                                    <ion-badge *ngFor="let interest of interests" role="link" (click)="openInterest(interest)">
-                                        {{ interest }}
-                                    </ion-badge>
-                                </ion-label>
+            <!-- USER DETAILS (for non-current user profiles) -->
+            @if (!isCurrentUser && (hasDetails || user.description)) {
+                <ion-accordion-group>
+                    @if (hasDetails) {
+                        <ion-accordion value="details">
+                            <ion-item slot="header">
+                                <ion-icon name="fas-info-circle" slot="start" color="primary"></ion-icon>
+                                <ion-label>{{ 'core.userdetails' | translate }}</ion-label>
                             </ion-item>
-                        }
-                        <core-user-profile-field *ngFor="let field of user.customfields" [field]="field" contextLevel="course"
-                            [contextInstanceId]="courseId" [courseId]="courseId" />
-                    </ion-item-group>
-                }
-            </ion-list>
+                            <div slot="content" class="accordion-content">
+                                <ion-list>
+                                    @if (interests) {
+                                        <ion-item class="ion-text-wrap core-user-profile-interests">
+                                            <ion-label>
+                                                <p class="item-heading">{{ 'core.user.interests' | translate }}</p>
+                                                <div class="interests-container">
+                                                    @for (interest of interests; track interest) {
+                                                        <ion-badge role="link" (click)="openInterest(interest)">{{ interest }}</ion-badge>
+                                                    }
+                                                </div>
+                                            </ion-label>
+                                        </ion-item>
+                                    }
+                                    @for (field of user.customfields; track field.shortname) {
+                                        <core-user-profile-field [field]="field" contextLevel="course"
+                                            [contextInstanceId]="courseId" [courseId]="courseId" />
+                                    }
+                                </ion-list>
+                            </div>
+                        </ion-accordion>
+                    }
+
+                    @if (user.description) {
+                        <ion-accordion value="description">
+                            <ion-item slot="header">
+                                <ion-icon name="fas-user-edit" slot="start" color="primary"></ion-icon>
+                                <ion-label>{{ 'core.user.description' | translate }}</ion-label>
+                            </ion-item>
+                            <div slot="content" class="accordion-content">
+                                <div class="description-content">
+                                    <core-format-text [text]="user.description" contextLevel="user" [contextInstanceId]="user.id"
+                                        [courseId]="courseId" />
+                                </div>
+                            </div>
+                        </ion-accordion>
+                    }
+                </ion-accordion-group>
+            }
         }
 
-        @if (!user || (!hasContact && !hasDetails && !user.description)) {
-            <core-empty-box icon="fas-user" [message]=" 'core.user.detailsnotavailable' | translate" />
+        @if (!user) {
+            <core-empty-box icon="fas-user" [message]="'core.user.detailsnotavailable' | translate" />
         }
     </core-loading>
 </ion-content>

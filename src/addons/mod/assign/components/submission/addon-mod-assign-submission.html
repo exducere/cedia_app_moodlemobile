@@ -239,12 +239,12 @@
                     <!-- Edit and remove buttons. -->
                     <div class="adaptable-buttons-row">
                         <ion-button expand="block" fill="outline" class="ion-margin ion-text-wrap" (click)="goToEdit()">
-                            <ion-icon name="fas-pen" slot="start" aria-hidden="true" />
+                            <ion-icon name="cedia-pencil-edit" slot="start" aria-hidden="true" />
                             {{ 'addon.mod_assign.editsubmission' | translate }}
                         </ion-button>
                         @if (isRemoveAvailable) {
                             <ion-button fill="outline" expand="block" class="ion-margin ion-text-wrap" (click)="remove()">
-                                <ion-icon name="fas-trash" color="danger" slot="start" aria-hidden="true" />
+                                <ion-icon name="cedia-trash" color="danger" slot="start" aria-hidden="true" />
                                 {{ 'addon.mod_assign.removesubmission' | translate }}
                             </ion-button>
                         }
@@ -280,7 +280,7 @@
                             @if (feedback.advancedgrade) {
                                 <ion-button slot="end" (click)="showAdvancedGrade(feedback.gradefordisplay)"
                                     [ariaLabel]="'core.showadvanced' |translate">
-                                    <ion-icon name="fas-magnifying-glass" slot="icon-only" aria-hidden="true" />
+                                    <ion-icon name="cedia-search" slot="icon-only" aria-hidden="true" />
                                 </ion-button>
                             }
                         </ion-item>
@@ -394,7 +394,7 @@
                                                 @if (attempt.advancedgrade) {
                                                     <ion-button slot="end" (click)="showAdvancedGrade(attempt.grade.gradefordisplay)"
                                                         [ariaLabel]="'core.showadvanced' |translate">
-                                                        <ion-icon name="fas-magnifying-glass" slot="icon-only" aria-hidden="true" />
+                                                        <ion-icon name="cedia-search" slot="icon-only" aria-hidden="true" />
                                                     </ion-button>
                                                 }
                                             </ion-item>
@@ -537,7 +537,7 @@
                                     {{ 'addon.mod_assign.submitassignment' | translate }}
                                 </ion-button>
                                 <p>
-                                    <ion-icon name="fas-circle-info" color="info" aria-hidden=" true" />
+                                    <ion-icon name="cedia-information" color="info" aria-hidden=" true" />
                                     {{ 'addon.mod_assign.submitassignment_help' | translate }}
                                 </p>
                             } @else {

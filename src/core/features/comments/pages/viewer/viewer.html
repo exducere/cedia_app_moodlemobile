@@ -17,7 +17,7 @@
             @if (canDeleteComments) {
                 <ion-button slot="end" fill="clear" (click)="toggleDelete()" [ariaLabel]="'core.toggledelete' | translate">
                     @if (!showDelete) {
-                        <ion-icon name="fas-pen" slot="icon-only" aria-hidden="true" />
+                        <ion-icon name="cedia-pencil-edit" slot="icon-only" aria-hidden="true" />
                     } @else {
                         <ion-icon name="fas-check" slot="icon-only" aria-hidden="true" />
                     }
@@ -39,7 +39,7 @@
     </ion-refresher>
     <core-loading [hideUntil]="commentsLoaded">
         @if (!comments?.length && !offlineComment) {
-            <core-empty-box icon="fas-comments" [message]="'core.comments.nocomments' | translate" />
+            <core-empty-box icon="cedia-message" [message]="'core.comments.nocomments' | translate" />
         }
 
         <!-- Load previous messages. -->

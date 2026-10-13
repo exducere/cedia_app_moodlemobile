@@ -27,7 +27,7 @@
                                         [attr.aria-label]="module.handlerData.a11yTitle + ', ' + modNameTranslated" />
                                 </ng-template>
                                 @if (module.visible === 0 || module.uservisible === false) {
-                                    <ion-icon name="fas-lock" [attr.aria-label]="'core.restricted' | translate" />
+                                    <ion-icon name="cedia-circle-lock" [attr.aria-label]="'core.restricted' | translate" />
                                 }
                                 @if (prefetchStatusIcon()) {
                                     <ion-icon [name]="prefetchStatusIcon()" color="success"
@@ -40,7 +40,7 @@
                                     <!-- Hidden badges -->
                                     @if (module.visible === 0) {
                                         <ion-badge color="secondary" class="ion-text-wrap">
-                                            <ion-icon name="far-eye-slash" aria-hidden="true" />
+                                            <ion-icon name="cedia-view-off" aria-hidden="true" />
                                             {{ 'core.course.hiddenfromstudents' | translate }}
                                         </ion-badge>
                                     } @else if(module.isStealth) {
@@ -110,7 +110,7 @@
                             <!-- Availability info -->
                             @if (showAvailability && module.availabilityinfo) {
                                 <div class="core-module-availabilityinfo colored-box-with-icon">
-                                    <ion-icon name="fas-lock" [attr.aria-label]="'core.restricted' | translate" />
+                                    <ion-icon name="cedia-circle-lock" [attr.aria-label]="'core.restricted' | translate" />
                                     <core-format-text [text]="module.availabilityinfo" contextLevel="module" [contextInstanceId]="module.id"
                                         [courseId]="module.course" />
                                 </div>
@@ -127,7 +127,7 @@
 
             @if (isLastViewed) {
                 <div class="core-course-last-module-viewed colored-box-with-icon">
-                    <ion-icon name="fas-eye" aria-hidden="true" />
+                    <ion-icon name=cedia-view aria-hidden="true" />
                     {{ 'core.course.lastaccessedactivity' | translate }}
                 </div>
             }

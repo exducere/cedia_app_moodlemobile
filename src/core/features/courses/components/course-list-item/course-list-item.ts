@@ -160,9 +160,27 @@ export class CoreCoursesCourseListItemComponent implements OnInit, OnDestroy, On
     }
 
     /**
-     * Open a course.
+     * Open a course with a lift animation before navigating.
      */
     openCourse(): void {
+        const card = this.element.querySelector<HTMLElement>('.course-card');
+
+        if (card) {
+            card.classList.add('course-lift-animation');
+
+            card.addEventListener('animationend', () => {
+                card.classList.remove('course-lift-animation');
+                this.navigateToCourse();
+            }, { once: true });
+        } else {
+            this.navigateToCourse();
+        }
+    }
+
+    /**
+     * Navigate to the course detail.
+     */
+    protected navigateToCourse(): void {
         if (this.isEnrolled) {
             CoreCourseHelper.openCourse(this.course, { params: { isGuest: false } });
         } else {
@@ -400,6 +418,8 @@ export class CoreCoursesCourseListItemComponent implements OnInit, OnDestroy, On
         this.courseStatusObserver?.off();
         this.progressObserver.off();
     }
+
+    protected readonly Math = Math;
 
 }
 

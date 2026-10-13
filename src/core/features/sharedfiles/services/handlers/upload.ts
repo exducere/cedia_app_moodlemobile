@@ -52,7 +52,7 @@ export class CoreSharedFilesUploadHandlerService implements CoreFileUploaderHand
         return {
             title: 'core.sharedfiles.sharedfiles',
             class: 'core-sharedfiles-fileuploader-handler',
-            icon: 'fas-folder',
+            icon: 'cedia-folder',
             action: (
                 maxSize?: number,
                 upload?: boolean,

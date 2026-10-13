@@ -40,7 +40,7 @@ export class CoreSearchMainMenuHandlerService implements CoreMainMenuHandler {
      */
     getDisplayData(): CoreMainMenuHandlerData {
         return {
-            icon: 'fas-magnifying-glass',
+            icon: 'cedia-search',
             title: 'core.search.globalsearch',
             page: CORE_SEARCH_PAGE_NAME,
             class: 'core-search-handler',

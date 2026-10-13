@@ -43,7 +43,7 @@ export class CoreTagMainMenuHandlerService implements CoreMainMenuHandler {
      */
     getDisplayData(): CoreMainMenuHandlerData {
         return {
-            icon: 'fas-tags',
+            icon: 'cedia-tags',
             title: 'core.tag.tags',
             page: CORE_TAG_MAIN_MENU_PAGE_NAME,
             class: 'core-tag-search-handler',

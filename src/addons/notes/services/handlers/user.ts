@@ -61,7 +61,7 @@ export class AddonNotesUserHandlerService implements CoreUserProfileHandler {
      */
     getDisplayData(): CoreUserProfileHandlerData {
         return {
-            icon: 'fas-receipt',
+            icon: 'cedia-invoice',
             title: 'addon.notes.notes',
             class: 'addon-notes-handler',
             action: (event, user, context, contextId): void => {

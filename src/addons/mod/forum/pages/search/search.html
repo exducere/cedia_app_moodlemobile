@@ -38,7 +38,7 @@
             [error]="loadMoreError" />
 
         @if (resultsSource.isEmpty()) {
-            <core-empty-box icon="fas-magnifying-glass" [dimmed]="!resultsSource.isLoaded()" role="alert">
+            <core-empty-box icon="cedia-search" [dimmed]="!resultsSource.isLoaded()" role="alert">
                 @if (!resultsSource.isLoaded()) {
                     <p>{{ 'core.search.empty' | translate }}</p>
                 } @else {

@@ -17,7 +17,7 @@
                 </ion-button>
             }
             <ion-button fill="clear" (click)="openModuleSummary()" aria-haspopup="true" [ariaLabel]="'core.info' | translate">
-                <ion-icon name="fas-circle-info" slot="icon-only" aria-hidden="true" />
+                <ion-icon name="cedia-information" slot="icon-only" aria-hidden="true" />
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
@@ -40,7 +40,7 @@
                 <!-- Hidden badges -->
                 @if (module.visible === 0) {
                     <ion-badge color="secondary" class="ion-text-wrap">
-                        <ion-icon name="far-eye-slash" aria-hidden="true" />
+                        <ion-icon name="cedia-view-off" aria-hidden="true" />
                         {{ 'core.course.hiddenfromstudents' | translate }}
                     </ion-badge>
                 } @else if (module.isStealth) {

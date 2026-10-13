@@ -31,19 +31,19 @@
                 </ion-label>
                 @if (!submission.timemodified) {
                     <ion-note slot="end">
-                        <ion-icon name="fas-clock" aria-hidden="true" /> {{ 'core.notsent' | translate }}
+                        <ion-icon name="cedia-clock" aria-hidden="true" /> {{ 'core.notsent' | translate }}
                     </ion-note>
                 } @else {
                     <ion-note slot="end">
                         {{submission.timemodified | coreDateDayOrTime}}
                         @if (submission.offline) {
                             <div>
-                                <ion-icon name="fas-clock" aria-hidden="true" /> {{ 'core.notsent' | translate }}
+                                <ion-icon name="cedia-clock" aria-hidden="true" /> {{ 'core.notsent' | translate }}
                             </div>
                         }
                         @if (submission.deleted) {
                             <div>
-                                <ion-icon name="fas-trash" aria-hidden="true" /> {{ 'core.deletedoffline' | translate }}
+                                <ion-icon name="cedia-trash" aria-hidden="true" /> {{ 'core.deletedoffline' | translate }}
                             </div>
                         }
                     </ion-note>
@@ -145,12 +145,12 @@
                     {{submission.timemodified | coreDateDayOrTime}}
                     @if (offline) {
                         <div>
-                            <ion-icon name="fas-clock" aria-hidden="true" /> {{ 'core.notsent' | translate }}
+                            <ion-icon name="cedia-clock" aria-hidden="true" /> {{ 'core.notsent' | translate }}
                         </div>
                     }
                     @if (submission.deleted) {
                         <div>
-                            <ion-icon name="fas-trash" aria-hidden="true" /> {{ 'core.deletedoffline' | translate }}
+                            <ion-icon name="cedia-trash" aria-hidden="true" /> {{ 'core.deletedoffline' | translate }}
                         </div>
                     }
                 </ion-note>

@@ -6,5 +6,34 @@ ion-list.core-sites-list {
         }
 
         border-bottom: 1px solid var(--stroke);
+
+        .site-logo {
+            max-height: 36px;
+            max-width: 130px;
+            object-fit: contain;
+            margin-inline-end: 12px;
+            margin-block: 4px;
+        }
+
+        &.current-site-header {
+            background: var(--ion-color-primary);
+
+            h2, p, a {
+                color: var(--ion-color-primary-contrast);
+            }
+
+            .site-logo {
+                filter: brightness(0) invert(1);
+            }
+        }
+    }
+
+    ion-card.current-site-card {
+        border: 2px solid var(--ion-color-primary);
+        box-shadow: 0 4px 16px rgba(var(--ion-color-primary-rgb), 0.25);
+    }
+
+    ion-item.item-current {
+        --background: rgba(var(--ion-color-primary-rgb), 0.06);
     }
 }

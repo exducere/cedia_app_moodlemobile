@@ -54,11 +54,11 @@
 
 
         @if (searchMode && !courses.length) {
-            <core-empty-box icon="fas-magnifying-glass" [message]="'core.courses.nosearchresults' | translate" role="alert" />
+            <core-empty-box icon="cedia-search" [message]="'core.courses.nosearchresults' | translate" role="alert" />
         }
 
         @if (!searchMode && !courses.length) {
-            <core-empty-box icon="fas-graduation-cap" [message]="'core.courses.nocourses' | translate" />
+            <core-empty-box icon="cedia-graduation" [message]="'core.courses.nocourses' | translate" />
         }
 
     </core-loading>

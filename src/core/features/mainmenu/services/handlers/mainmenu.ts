@@ -41,7 +41,7 @@ export class CoreMainMenuHomeHandlerService implements CoreMainMenuHandler {
      */
     getDisplayData(): CoreMainMenuHandlerData {
         return {
-            icon: 'fas-gauge-high',
+            icon: 'cedia-dashboard',
             title: 'core.mainmenu.home',
             page: MAIN_MENU_HOME_PAGE_NAME,
             class: 'core-home-handler',

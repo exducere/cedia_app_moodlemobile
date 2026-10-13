@@ -25,7 +25,7 @@ import { ADDON_CALENDAR_PAGE_NAME } from '@addons/calendar/constants';
 export class AddonCalendarMainMenuHandlerService implements CoreMainMenuHandler {
 
     name = 'AddonCalendar';
-    priority = 550;
+    priority = 400;
 
     /**
      * Check if the handler is enabled on a site level.
@@ -43,7 +43,7 @@ export class AddonCalendarMainMenuHandlerService implements CoreMainMenuHandler 
      */
     getDisplayData(): CoreMainMenuHandlerData {
         return {
-            icon: 'far-calendar',
+            icon: 'cedia-calendar',
             title: 'addon.calendar.calendar',
             page: ADDON_CALENDAR_PAGE_NAME,
             class: 'addon-calendar-handler',

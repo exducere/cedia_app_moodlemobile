@@ -14,7 +14,7 @@
     </ion-refresher>
     <core-loading [hideUntil]="loaded" placeholderType="column" placeholderHeight="36px">
         @if (!rows.length) {
-            <core-empty-box icon="fas-chart-bar" [message]="'core.grades.nogradesreturned' | translate" />
+            <core-empty-box icon="cedia-analytics" [message]="'core.grades.nogradesreturned' | translate" />
         } @else {
             <div class="core-grades-container">
                 <table class="core-table core-grades-table" [class.summary]="showSummary">

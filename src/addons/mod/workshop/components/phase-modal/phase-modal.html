@@ -25,7 +25,7 @@
             </ion-item-divider>
             @if (phase.switchUrl) {
                 <ion-item class="ion-text-wrap" [href]="phase.switchUrl" [detail]="false" core-link [capture]="false">
-                    <ion-icon slot="start" name="fas-right-left" aria-hidden="true" />
+                    <ion-icon slot="start" name="cedia-user-switch" aria-hidden="true" />
                     <ion-label>
                         <p>{{ 'addon.mod_workshop.switchphase' + phase.code | translate }}</p>
                     </ion-label>
@@ -44,7 +44,7 @@
                             [attr.aria-label]="'addon.mod_workshop.taskfail' | translate" />
                     }
                     @case ('info') {
-                        <ion-icon slot="start" name="fas-circle-info" color="info"
+                        <ion-icon slot="start" name="cedia-information" color="info"
                             [attr.aria-label]="'addon.mod_workshop.taskinfo' | translate" />
                     }
                     @case ('1') {

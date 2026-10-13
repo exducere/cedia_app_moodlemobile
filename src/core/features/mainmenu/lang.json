@@ -1,5 +1,16 @@
 {
-    "home": "Home",
+    "allcourses": "Todos",
+    "courses": "Courses",
+    "coursesavailable": "cursos disponibles",
+    "currentcourses": "Cursos Actuales",
+    "favorite": "Favoritos",
+    "future": "Future",
+    "home": "Inicio",
+    "inprogress": "En Progreso",
     "logout": "Log out",
-    "switchaccount": "Switch account"
+    "panelcontrol": "Panel de Control",
+    "past": "Completados",
+    "searchcourse": "Buscar cursos...",
+    "switchaccount": "Switch account",
+    "welcome": "Bienvenido"
 }

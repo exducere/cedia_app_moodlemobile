@@ -42,7 +42,7 @@ import { CoreBaseModule } from '@/core/base.module';
  *     <ion-input type="password" />
  * </core-show-password>
  *
- * @deprecated since 4.5. Use <ion-input-password-toggle slot="end" showIcon="fas-eye" hideIcon="fas-eye-slash" /> instead.
+ * @deprecated since 4.5. Use <ion-input-password-toggle slot="end" showIcon=cedia-view hideIcon=cedia-view-off /> instead.
  */
 @Component({
     selector: 'core-show-password',

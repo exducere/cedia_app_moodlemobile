@@ -28,7 +28,7 @@
         <ion-list class="list-item-limited-width">
             @if (currentCategory) {
                 <ion-item class="ion-text-wrap">
-                    <ion-icon name="fas-folder" slot="start" [attr.aria-label]="'core.category' | translate" />
+                    <ion-icon name="cedia-folder" slot="start" [attr.aria-label]="'core.category' | translate" />
                     <ion-label>
                         <p class="item-heading">
                             <core-format-text [text]="currentCategory.name" contextLevel="coursecat"
@@ -54,7 +54,7 @@
                     <ion-card *ngFor="let category of categories" [attr.data-category-id]="category.id">
                         <ion-item button class="ion-text-wrap" (click)="openCategory(category.id)" [attr.aria-label]="category.name"
                             [detail]="true">
-                            <ion-icon name="fas-folder" slot="start" [attr.aria-label]="'core.category' | translate" />
+                            <ion-icon name="cedia-folder" slot="start" [attr.aria-label]="'core.category' | translate" />
                             <ion-label>
                                 <p class="item-heading">
                                     <core-format-text [text]="category.name" contextLevel="coursecat" [contextInstanceId]="category.id" />
@@ -88,7 +88,7 @@
             }
         </ion-list>
         @if (!categories.length && !courses.length) {
-            <core-empty-box icon="fas-graduation-cap" [message]="'core.courses.nocoursesyet' | translate" />
+            <core-empty-box icon="cedia-graduation" [message]="'core.courses.nocoursesyet' | translate" />
         }
     </core-loading>
 </ion-content>

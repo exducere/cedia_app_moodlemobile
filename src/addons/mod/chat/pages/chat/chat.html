@@ -43,7 +43,7 @@
                         @if (message.system && message.message === 'exit') {
                             <ion-badge class="ion-text-wrap" color="danger">
                                 <span>
-                                    <ion-icon name="fas-right-from-bracket" aria-hidden="true" />
+                                    <ion-icon name="cedia-login" aria-hidden="true" />
                                     {{ message.timestamp * 1000 | coreFormatDate:"strftimetime" }}
                                     {{ 'addon.mod_chat.messageexit' | translate:{$a: message.userfullname} }}
                                 </span>
@@ -53,7 +53,7 @@
                         @if (message.beep === 'all') {
                             <ion-badge class="ion-text-wrap" color="primary">
                                 <span>
-                                    <ion-icon name="fas-bell" aria-hidden="true" />
+                                    <ion-icon name="cedia-notification" aria-hidden="true" />
                                     {{ message.timestamp * 1000 | coreFormatDate:"strftimetime" }}
                                     {{ 'addon.mod_chat.messagebeepseveryone' | translate:{$a: message.userfullname} }}
                                 </span>
@@ -63,7 +63,7 @@
                         @if (message.userid !== currentUserId && message.beep === currentUserId) {
                             <ion-badge class="ion-text-wrap" color="primary">
                                 <span>
-                                    <ion-icon name="fas-bell" aria-hidden="true" />
+                                    <ion-icon name="cedia-notification" aria-hidden="true" />
                                     {{ message.timestamp * 1000 | coreFormatDate:"strftimetime" }}
                                     {{ 'addon.mod_chat.messagebeepsyou' | translate:{$a: message.userfullname} }}
                                 </span>
@@ -73,7 +73,7 @@
                         @if (message.userid === currentUserId && message.beep && message.beep !== 'all') {
                             <ion-badge class="ion-text-wrap" color="light">
                                 <span>
-                                    <ion-icon name="fas-bell" aria-hidden="true" />
+                                    <ion-icon name="cedia-notification" aria-hidden="true" />
                                     {{ message.timestamp * 1000 | coreFormatDate:"strftimetime" }}
                                     {{ 'addon.mod_chat.messageyoubeep' | translate:{$a: message.beepWho} }}
                                 </span>
@@ -103,7 +103,7 @@
         </ion-list>
 
         @if (!messages || messages.length <= 0) {
-            <core-empty-box icon="far-comments" [message]="'addon.mod_chat.nomessages' | translate" />
+            <core-empty-box icon="cedia-message-multiple" [message]="'addon.mod_chat.nomessages' | translate" />
         }
     </core-loading>
 </ion-content>

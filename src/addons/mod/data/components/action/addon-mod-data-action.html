@@ -4,19 +4,19 @@
     </ion-button>
 } @else if (action === 'more') {
     <ion-button size="small" fill="clear" (click)="viewEntry()" [ariaLabel]="'addon.mod_data.showmore' | translate">
-        <ion-icon name="fas-magnifying-glass-plus" slot="icon-only" aria-hidden="true" />
+        <ion-icon name="cedia-search-plus" slot="icon-only" aria-hidden="true" />
     </ion-button>
 } @else if (action === 'edit') {
     <ion-button size="small" fill="clear" (click)="editEntry()" [ariaLabel]="'core.edit' | translate">
-        <ion-icon name="fas-pen" slot="icon-only" aria-hidden="true" />
+        <ion-icon name="cedia-pencil-edit" slot="icon-only" aria-hidden="true" />
     </ion-button>
 } @else if (action === 'delete' && !entry.deleted) {
     <ion-button size="small" fill="clear" color="danger" (click)="deleteEntry()" [ariaLabel]="'core.delete' | translate">
-        <ion-icon name="fas-trash" slot="icon-only" aria-hidden="true" />
+        <ion-icon name="cedia-trash" slot="icon-only" aria-hidden="true" />
     </ion-button>
 } @else if (action === 'delete' && entry.deleted) {
     <ion-button size="small" fill="clear" color="danger" (click)="undoDelete()" [ariaLabel]="'core.restore' | translate">
-        <ion-icon name="fas-rotate-left" slot="icon-only" aria-hidden="true" />
+        <ion-icon name="cedia-rotate-left" slot="icon-only" aria-hidden="true" />
     </ion-button>
 } @else if (action === 'approve') {
     <ion-button size="small" fill="clear" (click)="approveEntry()" [ariaLabel]="'addon.mod_data.approve' | translate">

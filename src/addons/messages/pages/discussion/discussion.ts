@@ -109,11 +109,11 @@ export default class AddonMessagesDiscussionPage implements OnInit, OnDestroy, A
     canDelete = false;
     isGroup = false;
     members: {[id: number]: AddonMessagesConversationMember} = {}; // Members that wrote a message, indexed by ID.
-    favouriteIcon = 'fas-star';
-    deleteIcon = 'fas-trash';
+    favouriteIcon = 'cedia-star';
+    deleteIcon = 'cedia-trash';
     blockIcon = 'fas-user-lock';
     addRemoveIcon = 'fas-user-plus';
-    muteIcon = 'fas-bell-slash';
+    muteIcon = 'cedia-notification-slash';
     muteEnabled = false;
     otherMember?: AddonMessagesConversationMember; // Other member information (individual conversations only).
     footerType: 'message' | 'blocked' | 'requiresContact' | 'requestSent' | 'requestReceived' | 'unable' = 'unable';
@@ -529,8 +529,8 @@ export default class AddonMessagesDiscussionPage implements OnInit, OnDestroy, A
             this.title = this.conversation.name;
             this.conversationImage = this.conversation.imageurl;
             this.isGroup = this.conversation.type === AddonMessagesMessageConversationType.GROUP;
-            this.favouriteIcon = 'fas-star';
-            this.muteIcon = this.conversation.ismuted ? 'fas-bell' : 'fas-bell-slash';
+            this.favouriteIcon = 'cedia-star';
+            this.muteIcon = this.conversation.ismuted ? 'cedia-notification' : 'cedia-notification-slash';
             if (!this.isGroup) {
                 this.userId = this.conversation.userid;
             }
@@ -1133,7 +1133,7 @@ export default class AddonMessagesDiscussionPage implements OnInit, OnDestroy, A
         } catch (error) {
             CoreAlerts.showError(error, { default: 'Error changing favourite state.' });
         } finally {
-            this.favouriteIcon = 'fas-star';
+            this.favouriteIcon = 'cedia-star';
             done && done();
         }
     }
@@ -1166,7 +1166,7 @@ export default class AddonMessagesDiscussionPage implements OnInit, OnDestroy, A
         } catch (error) {
             CoreAlerts.showError(error, { default: 'Error changing muted state.' });
         } finally {
-            this.muteIcon = this.conversation.ismuted ? 'fas-bell' : 'fas-bell-slash';
+            this.muteIcon = this.conversation.ismuted ? 'cedia-notification' : 'cedia-notification-slash';
             done && done();
         }
     }
@@ -1288,7 +1288,7 @@ export default class AddonMessagesDiscussionPage implements OnInit, OnDestroy, A
             } catch (error) {
                 CoreAlerts.showError(error, { default: 'Error deleting conversation.' });
             } finally {
-                this.deleteIcon = 'fas-trash';
+                this.deleteIcon = 'cedia-trash';
             }
         } catch {
             // User cancelled.

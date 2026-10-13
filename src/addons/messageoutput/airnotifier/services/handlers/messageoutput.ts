@@ -47,7 +47,7 @@ export class AddonMessageOutputAirnotifierHandlerService implements AddonMessage
         return {
             priority: 600,
             label: 'addon.messageoutput_airnotifier.processorsettingsdesc',
-            icon: 'fas-gear',
+            icon: 'cedia-gear-complex',
             page: ADDON_MESSAGEOUTPUT_AIRNOTIFIER_PAGE_NAME,
         };
     }

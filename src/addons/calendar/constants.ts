@@ -49,9 +49,9 @@ export const ADDON_CALENDAR_FILTER_CHANGED_EVENT = 'addon_calendar_filter_change
  * Context levels enumeration.
  */
 export enum AddonCalendarEventIcons {
-    SITE = 'fas-globe',
+    SITE = 'cedia-globe',
     CATEGORY = 'fas-cubes',
-    COURSE = 'fas-graduation-cap',
+    COURSE = 'cedia-graduation',
     GROUP = 'fas-users',
     USER = 'fas-user',
 }

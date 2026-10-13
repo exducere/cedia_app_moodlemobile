@@ -11,18 +11,18 @@
         </ion-title>
         <ion-buttons slot="end">
             <ion-button fill="clear" (click)="openFilter()" [ariaLabel]="'core.filter' | translate">
-                <ion-icon slot="icon-only" name="fas-filter" aria-hidden="true" />
+                <ion-icon slot="icon-only" name="cedia-filter" aria-hidden="true" />
             </ion-button>
             <core-context-menu>
                 @if (showCalendar) {
                     <core-context-menu-item [priority]="800" [content]="'addon.calendar.upcomingevents' | translate"
-                        iconAction="fas-table-list" (action)="toggleDisplay()" />
+                        iconAction="cedia-layout-table" (action)="toggleDisplay()" />
                 } @else {
                     <core-context-menu-item [priority]="800" [content]="'addon.calendar.monthlyview' | translate"
-                        iconAction="fas-calendar-days" (action)="toggleDisplay()" />
+                        iconAction="cedia-calendar-days" (action)="toggleDisplay()" />
                 }
                 <core-context-menu-item [priority]="600" [content]="'core.settings.settings' | translate" (action)="openSettings()"
-                    iconAction="fas-gears" />
+                    iconAction="cedia-gears" />
                 <core-context-menu-item [hidden]="!loaded || !hasOffline || !isOnline()" [priority]="400"
                     [content]="'core.settings.synchronizenow' | translate" (action)="doRefresh(undefined, $event, true)"
                     [iconAction]="syncIcon" [closeOnClick]="false" />
@@ -59,7 +59,7 @@
     @if (canCreate) {
         <ion-fab slot="fixed" core-fab vertical="bottom" horizontal="end">
             <ion-fab-button (click)="openEdit()" [attr.aria-label]="'addon.calendar.newevent' | translate">
-                <ion-icon name="fas-plus" aria-hidden="true" />
+                <ion-icon name="cedia-add" aria-hidden="true" />
                 <span class="sr-only">{{ 'addon.calendar.newevent' | translate }}</span>
             </ion-fab-button>
         </ion-fab>

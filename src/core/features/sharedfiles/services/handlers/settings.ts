@@ -43,7 +43,7 @@ export class CoreSharedFilesSettingsHandlerService implements CoreSettingsHandle
      */
     getDisplayData(): CoreSettingsHandlerData {
         return {
-            icon: 'fas-folder',
+            icon: 'cedia-folder',
             title: 'core.sharedfiles.sharedfiles',
             page: `${SHAREDFILES_PAGE_NAME}/list/root`,
             params: { manage: true, hideSitePicker: true },

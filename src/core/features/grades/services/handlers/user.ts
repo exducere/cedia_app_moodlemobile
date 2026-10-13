@@ -92,7 +92,7 @@ export class CoreGradesUserHandlerService implements CoreUserProfileHandler {
     getDisplayData(user: CoreUserProfile, context: CoreUserDelegateContext): CoreUserProfileHandlerData {
         if (context === CoreUserDelegateContext.COURSE) {
             return {
-                icon: 'fas-chart-bar',
+                icon: 'cedia-analytics',
                 title: 'core.grades.grades',
                 class: 'core-grades-user-handler',
                 action: (event, user, context, contextId): void => {
@@ -105,7 +105,7 @@ export class CoreGradesUserHandlerService implements CoreUserProfileHandler {
             };
         } else {
             return {
-                icon: 'fas-chart-bar',
+                icon: 'cedia-analytics',
                 title: 'core.grades.grades',
                 class: 'core-grades-coursesgrades-handler',
                 action: (event): void => {

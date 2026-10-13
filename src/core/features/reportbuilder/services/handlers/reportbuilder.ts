@@ -60,7 +60,7 @@ export class CoreReportBuilderHandlerService implements CoreUserProfileHandler {
     getDisplayData(): CoreUserProfileHandlerData {
         return {
             class: 'core-report-builder',
-            icon: 'fas-rectangle-list',
+            icon: 'cedia-stairs',
             title: 'core.reportbuilder.reports',
             action: async (event): Promise<void> => {
                 event.preventDefault();

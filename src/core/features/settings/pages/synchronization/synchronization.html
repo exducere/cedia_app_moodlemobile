@@ -9,7 +9,7 @@
         <ion-buttons slot="end">
             <core-navbar-buttons>
                 <ion-button fill="clear" (click)="showInfo()" [ariaLabel]="'core.info' | translate">
-                    <ion-icon name="fas-circle-info" slot="icon-only" aria-hidden="true" />
+                    <ion-icon name="cedia-information" slot="icon-only" aria-hidden="true" />
                 </ion-button>
             </core-navbar-buttons>
         </ion-buttons>
@@ -64,7 +64,7 @@
                             <core-button-with-spinner [loading]="isSynchronizing(site.id)" slot="end">
                                 <ion-button fill="clear" (click)="synchronize(site.id)"
                                     [ariaLabel]="'core.settings.synchronizenow' | translate">
-                                    <ion-icon name="fas-rotate" slot="icon-only" aria-hidden="true" />
+                                    <ion-icon name="cedia-rotate" slot="icon-only" aria-hidden="true" />
                                 </ion-button>
                             </core-button-with-spinner>
                         } @else {

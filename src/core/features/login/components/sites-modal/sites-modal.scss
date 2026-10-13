@@ -1,0 +1,15 @@
+.current-account-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: var(--ion-color-success);
+    color: var(--ion-color-success-contrast);
+    border-radius: 12px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+
+    ion-icon {
+        font-size: 12px;
+    }
+}

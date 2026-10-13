@@ -12,7 +12,6 @@
                     (action)="fetchEntries(true, true, true)" [iconAction]="syncIcon" [closeOnClick]="false" />
             </core-context-menu>
 
-            <core-user-menu-button />
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
@@ -56,7 +55,7 @@
                         @if (entryHasOfflineData(entry)) {
                             <span class="entry-draft">
                                 <ion-badge color="light">
-                                    <ion-icon name="fas-clock" [attr.aria-label]="'core.lastmodified' | translate" />
+                                    <ion-icon name="cedia-clock" [attr.aria-label]="'core.lastmodified' | translate" />
                                     {{ 'core.notsent' | translate }}
                                 </ion-badge>
                             </span>
@@ -73,7 +72,7 @@
                     @if (entry.deleted) {
                         <ion-button slot="end" fill="clear" color="danger" (click)="undoDelete(entry)"
                             [ariaLabel]="'core.restore' | translate">
-                            <ion-icon name="fas-rotate-left" slot="icon-only" aria-hidden="true" />
+                            <ion-icon name="cedia-rotate-left" slot="icon-only" aria-hidden="true" />
                         </ion-button>
                     }
                 </div>
@@ -122,7 +121,7 @@
                     <ion-item class="entry-last-modification" lines="none">
                         @if (entry.lastmodified > entry.created) {
                             <ion-note class="flex ion-align-items-center" slot="start">
-                                <ion-icon name="fas-clock" [attr.aria-label]="'core.lastmodified' | translate" />
+                                <ion-icon name="cedia-clock" [attr.aria-label]="'core.lastmodified' | translate" />
                                 {{ entry.lastmodified | coreTimeAgo }}
                             </ion-note>
                         }
@@ -143,7 +142,7 @@
 
             </div>
         } @empty {
-            <core-empty-box icon="far-newspaper" [message]="'addon.blog.noentriesyet' | translate" />
+            <core-empty-box icon="cedia-news" [message]="'addon.blog.noentriesyet' | translate" />
         }
 
         <core-infinite-loading [enabled]="canLoadMore" (action)="loadMore($event)" [error]="loadMoreError" />
@@ -154,7 +153,7 @@
     @if ((filter.userid === currentUserId || showMyEntriesToggle) && loaded() && optionsAvailable) {
         <ion-fab slot="fixed" core-fab vertical="bottom" horizontal="end">
             <ion-fab-button (click)="createNewEntry()" [attr.aria-label]="'addon.blog.addnewentry' | translate">
-                <ion-icon name="fas-pen-to-square" aria-hidden="true" />
+                <ion-icon name="cedia-pencil-edit" aria-hidden="true" />
                 <span class="sr-only">{{ 'addon.blog.addnewentry' | translate }}</span>
             </ion-fab-button>
         </ion-fab>

@@ -33,6 +33,7 @@ import { CoreGradesGradeOverviewWithCourseData } from '@features/grades/services
 @Component({
     selector: 'page-core-grades-courses',
     templateUrl: 'courses.html',
+    styleUrls: ['courses.scss'],
     imports: [
         CoreSharedModule,
     ],

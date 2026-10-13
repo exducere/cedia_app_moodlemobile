@@ -53,7 +53,7 @@ export class CoreUserProfileMailHandlerService implements CoreUserProfileHandler
      */
     getDisplayData(): CoreUserProfileHandlerData {
         return {
-            icon: 'fas-envelope',
+            icon: 'cedia-envelope-circle-user',
             title: 'core.user.sendemail',
             class: 'core-user-profile-mail',
             action: (event, user): void => {

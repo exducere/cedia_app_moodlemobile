@@ -20,11 +20,11 @@
                 @if (currentUserId !== user.id && isOnline()) {
 
                     <ion-button fill="clear" (click)="talkTo(user)">
-                        <ion-icon name="fas-comments" slot="start" aria-hidden="true" />
+                        <ion-icon name="cedia-message" slot="start" aria-hidden="true" />
                         {{ 'addon.mod_chat.talk' | translate }}
                     </ion-button>
                     <ion-button fill="clear" (click)="beepTo(user)">
-                        <ion-icon name="fas-bell" slot="start" aria-hidden="true" />
+                        <ion-icon name="cedia-notification" slot="start" aria-hidden="true" />
                         {{ 'addon.mod_chat.beep' | translate }}
                     </ion-button>
 

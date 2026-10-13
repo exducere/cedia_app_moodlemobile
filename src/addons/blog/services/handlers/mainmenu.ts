@@ -39,7 +39,7 @@ export class AddonBlogMainMenuHandlerService implements CoreMainMenuHandler {
      */
     getDisplayData(): CoreMainMenuHandlerData {
         return {
-            icon: 'far-newspaper',
+            icon: 'cedia-news',
             title: 'addon.blog.siteblogheading',
             page: ADDON_BLOG_MAINMENU_PAGE_NAME,
             class: 'addon-blog-handler',

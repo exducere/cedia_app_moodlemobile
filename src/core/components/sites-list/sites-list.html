@@ -1,7 +1,7 @@
 @if (accountsList()) {
     <ion-list class="core-sites-list">
         @if (accountsList().currentSite) {
-            <ion-card>
+            <ion-card class="current-site-card">
                 <ng-container *ngTemplateOutlet="siteCardHeader; context: {site: accountsList().currentSite, isCurrentSite: true}" />
 
                 <ng-container *ngTemplateOutlet="siteItem; context: {site: accountsList().currentSite, isCurrentSite: true}" />
@@ -28,12 +28,15 @@
 <!-- Template to render the header of a site card. -->
 <ng-template #siteCardHeader let-site="site" let-isCurrentSite="isCurrentSite">
     @if (site) {
-        <ion-item-divider sticky="true" class="core-sites-list-sitename ion-text-nowrap">
+        <ion-item-divider sticky="true" class="core-sites-list-sitename ion-text-nowrap" [class.current-site-header]="isCurrentSite">
+            @if (site.info?.compactlogourl || site.info?.logourl) {
+                <img [src]="site.info?.compactlogourl || site.info?.logourl" class="site-logo" alt="" aria-hidden="true" />
+            }
             <ion-label class="ion-text-nowrap">
                 <h2>
                     <core-format-text [text]="site.siteName" [clean]="true" [siteId]="site.id" />
                 </h2>
-                @if (displaySiteUrl(site)) {
+                @if (!(site.info?.compactlogourl || site.info?.logourl) && displaySiteUrl(site)) {
                     <p>
                         <a [href]="site.siteUrl" core-link [autoLogin]="!!isCurrentSite">
                             {{ site.siteUrlWithoutProtocol }}

@@ -30,9 +30,9 @@
         <core-context-menu-item [hidden]="sort === 'flat-newest'" [priority]="450"
             [content]="'addon.mod_forum.modeflatnewestfirst' | translate" iconAction="fas-arrow-up" (action)="changeSort('flat-newest')" />
         <core-context-menu-item [hidden]="sort === 'nested'" [priority]="400" [content]="'addon.mod_forum.modenested' | translate"
-            iconAction="fas-right-left" (action)="changeSort('nested')" />
+            iconAction="cedia-user-switch" (action)="changeSort('nested')" />
         <core-context-menu-item [hidden]="!discussion || !discussion.canlock || discussion.locked" [priority]="300"
-            [content]="'addon.mod_forum.lockdiscussion' | translate" iconAction="fas-lock" (action)="setLockState(true)" />
+            [content]="'addon.mod_forum.lockdiscussion' | translate" iconAction="cedia-circle-lock" (action)="setLockState(true)" />
         <core-context-menu-item [hidden]="!discussion || !discussion.canlock || !discussion.locked" [priority]="300"
             [content]="'addon.mod_forum.unlockdiscussion' | translate" iconAction="fas-unlock" (action)="setLockState(false)" />
         <core-context-menu-item [hidden]="!discussion || !canPin || discussion.pinned" [priority]="250"
@@ -41,9 +41,9 @@
             [content]="'addon.mod_forum.unpindiscussion' | translate" [iconSlash]="true" iconAction="fas-map-pin"
             (action)="setPinState(false)" />
         <core-context-menu-item [hidden]="!discussion || !discussion.canfavourite || discussion.starred" [priority]="200"
-            [content]="'addon.mod_forum.addtofavourites' | translate" iconAction="fas-star" (action)="toggleFavouriteState(true)" />
+            [content]="'addon.mod_forum.addtofavourites' | translate" iconAction="cedia-star" (action)="toggleFavouriteState(true)" />
         <core-context-menu-item [hidden]="!discussion || !discussion.canfavourite || !discussion.starred" [priority]="200"
-            [content]="'addon.mod_forum.removefromfavourites' | translate" iconAction="fas-star" [iconSlash]="true"
+            [content]="'addon.mod_forum.removefromfavourites' | translate" iconAction="cedia-star" [iconSlash]="true"
             (action)="toggleFavouriteState(false)" />
         <core-context-menu-item [hidden]="!externalUrl" [priority]="100" [content]="'core.openinbrowser' | translate" [href]="externalUrl"
             iconAction="fas-up-right-from-square" [showBrowserWarning]="false" />
@@ -69,7 +69,7 @@
         @if (availabilityMessage) {
             <ion-card class="core-info-card">
                 <ion-item>
-                    <ion-icon name="fas-circle-info" slot="start" aria-hidden="true" />
+                    <ion-icon name="cedia-information" slot="start" aria-hidden="true" />
                     <ion-label>{{ availabilityMessage }}</ion-label>
                 </ion-item>
             </ion-card>
@@ -78,7 +78,7 @@
         @if (discussion && discussion.locked) {
             <ion-card class="core-info-card">
                 <ion-item>
-                    <ion-icon name="fas-lock" slot="start" aria-hidden="true" />
+                    <ion-icon name="cedia-circle-lock" slot="start" aria-hidden="true" />
                     <ion-label>{{ 'addon.mod_forum.discussionlocked' | translate }}</ion-label>
                 </ion-item>
             </ion-card>
@@ -88,7 +88,7 @@
         @if (showQAMessage) {
             <ion-card class="core-info-card">
                 <ion-item>
-                    <ion-icon name="fas-circle-info" slot="start" aria-hidden="true" />
+                    <ion-icon name="cedia-information" slot="start" aria-hidden="true" />
                     <ion-label>{{ 'addon.mod_forum.qandanotify' | translate }}</ion-label>
                 </ion-item>
             </ion-card>

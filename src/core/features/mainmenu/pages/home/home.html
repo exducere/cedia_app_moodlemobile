@@ -1,23 +1,89 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button [text]="'core.back' | translate" />
-        </ion-buttons>
-        <ion-title>
-            <h1>
-                <core-site-logo logoType="top" />
-            </h1>
-        </ion-title>
-        <ion-buttons slot="end">
-            <core-user-menu-button />
-        </ion-buttons>
-    </ion-toolbar>
-</ion-header>
-<core-loading [hideUntil]="loaded">
-    @if (tabs.length === 0) {
-        <core-empty-box icon="fas-house" [message]="'core.courses.nocourses' | translate" />
-    }
-</core-loading>
-@if (tabs.length > 0) {
-    <core-tabs-outlet [hideUntil]="loaded" [tabs]="tabs" (ionChange)="tabSelected()" />
-}
+
+<ion-content class="home-content-page">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event.target)">
+        <ion-refresher-content />
+    </ion-refresher>
+
+    <div class="home-layout">
+
+        <!-- Greeting header -->
+        <div class="home-greeting-section">
+            <div class="home-greeting-text">
+                <span class="home-panel-label">{{ 'core.mainmenu.panelcontrol' | translate }}</span>
+                <h2 class="home-welcome-name">
+                    {{ 'core.mainmenu.welcome' | translate }},
+                    <core-format-text [text]="siteUserName" contextLevel="system" [contextInstanceId]="0" />
+                </h2>
+            </div>
+        </div>
+
+        <!-- Search bar -->
+        <div class="home-search-container">
+            <ion-icon name="search-outline" class="home-search-icon" />
+            <ion-input class="home-search-input" [(ngModel)]="textFilter" (ionInput)="filterTextChanged($event.target)"
+                       [placeholder]="'core.mainmenu.searchcourse' | translate" />
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="home-filter-tabs">
+            <button class="home-tab" [class.active]="filters.timeFilterSelected === 'allincludinghidden'"
+                (click)="selectFilter('allincludinghidden')">
+                {{ 'core.mainmenu.allcourses' | translate }}
+            </button>
+            <button class="home-tab" [class.active]="filters.timeFilterSelected === 'inprogress'"
+                (click)="selectFilter('inprogress')">
+                {{ 'core.mainmenu.inprogress' | translate }}
+            </button>
+            <button class="home-tab" [class.active]="filters.timeFilterSelected === 'past'"
+                (click)="selectFilter('past')">
+                {{ 'core.mainmenu.past' | translate }}
+            </button>
+            <button class="home-tab" [class.active]="filters.timeFilterSelected === 'favourite'"
+                (click)="selectFilter('favourite')">
+                {{ 'core.mainmenu.favorite' | translate }}
+            </button>
+        </div>
+
+        <!-- Dynamic content -->
+        <div class="home-dynamic-area">
+            <core-loading [hideUntil]="loaded">
+                <div class="home-loaded-content">
+
+                    @if (hasCourses && filteredCourses.length > 0) {
+                        <div class="home-section-title">
+                            <ion-icon name="cedia-graduation" class="home-section-icon" />
+                            <span>{{ 'core.mainmenu.currentcourses' | translate }}</span>
+                        </div>
+
+                        <swiper-container
+                            class="home-courses-swiper"
+                            slides-per-view="1.15"
+                            space-between="14"
+                            [attr.loop]="false" coverflow-effect-slide-shadows="false">
+                            @for (course of filteredCourses; track course.id) {
+                                <swiper-slide class="home-course-slide">
+                                    <core-courses-course-list-item [course]="course" class="core-courseoverview"
+                                        [showDownload]="downloadCourseEnabled" />
+                                </swiper-slide>
+                            }
+                        </swiper-container>
+                    }
+
+                    @if (filteredCourses.length === 0) {
+                        <core-empty-box class="home-empty-box" image="assets/img/icons/courses.svg">
+                            @if (hasCourses) {
+                                <p class="item-heading">{{ 'addon.block_myoverview.noresult' | translate }}</p>
+                            } @else {
+                                <p class="item-heading">{{ 'addon.block_myoverview.nocoursesenrolled' | translate }}</p>
+                            }
+                        </core-empty-box>
+                    }
+
+                    <addon-block-recentlyaccesseditems [block]="recentBlock()" contextLevel="user" title=""
+                                                       [instanceId]="userId"/>
+                </div>
+            </core-loading>
+        </div>
+
+    </div>
+</ion-content>

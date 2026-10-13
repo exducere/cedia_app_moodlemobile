@@ -127,13 +127,13 @@
                 <div class="list-item-limited-width adaptable-buttons-row">
                     @if (accessInfo?.cancontactdpo) {
                         <ion-button class="ion-margin ion-text-wrap" expand="block" (click)="contactDPO()" fill="outline">
-                            <ion-icon slot="start" name="fas-envelope" [attr.aria-hidden]="true" />
+                            <ion-icon slot="start" name="cedia-envelope-circle-user" [attr.aria-hidden]="true" />
                             {{ 'core.dataprivacy.contactdataprotectionofficer' | translate }}
                         </ion-button>
                     }
                     @if (accessInfo?.cancreatedatadownloadrequest || accessInfo?.cancreatedatadeletionrequest) {
                         <ion-button class="ion-margin ion-text-wrap" expand="block" (click)="newRequest()">
-                            <ion-icon slot="start" name="fas-pen-to-square" [attr.aria-hidden]="true" />
+                            <ion-icon slot="start" name="cedia-pencil-edit" [attr.aria-hidden]="true" />
                             {{ 'core.dataprivacy.newrequest' | translate }}
                         </ion-button>
                     }

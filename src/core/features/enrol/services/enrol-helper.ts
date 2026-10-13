@@ -65,7 +65,7 @@ export class CoreEnrolHelperService {
             enrolmentIcons.push({
                 className: 'enrol_locked',
                 label: 'core.courses.notenrollable',
-                icon: 'fas-lock',
+                icon: 'cedia-circle-lock',
             });
         }
 

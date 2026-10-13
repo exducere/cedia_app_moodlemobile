@@ -196,14 +196,14 @@ export class CoreConstants {
     // Download / prefetch status icon.
     static readonly ICON_DOWNLOADED = 'fam-cloud-done';
     static readonly ICON_DOWNLOADING = 'spinner';
-    static readonly ICON_NOT_DOWNLOADED = 'fas-cloud-arrow-down';
+    static readonly ICON_NOT_DOWNLOADED = 'cedia-cloud-download';
     static readonly ICON_OUTDATED = 'fam-cloud-refresh';
     static readonly ICON_NOT_DOWNLOADABLE = '';
 
     // General download and sync icons.
     static readonly ICON_LOADING = 'spinner';
-    static readonly ICON_REFRESH = 'fas-rotate-right';
-    static readonly ICON_SYNC = 'fas-rotate';
+    static readonly ICON_REFRESH = 'cedia-rotate-right';
+    static readonly ICON_SYNC = 'cedia-rotate';
 
     /**
      * @deprecated since 5.0. Use ModResourceDisplay.AUTO instead.

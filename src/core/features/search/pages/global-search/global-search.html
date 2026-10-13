@@ -42,7 +42,7 @@
             [error]="loadMoreError" />
 
         @if (resultsSource.isEmpty()) {
-            <core-empty-box icon="fas-magnifying-glass" [dimmed]="!resultsSource.isLoaded()">
+            <core-empty-box icon="cedia-search" [dimmed]="!resultsSource.isLoaded()">
                 @if (!resultsSource.isLoaded()) {
                     <p role="alert">{{ 'core.search.empty' | translate }}</p>
                 } @else {
@@ -54,7 +54,7 @@
 
         <ion-fab slot="fixed" core-fab vertical="bottom" horizontal="end">
             <ion-fab-button (click)="openFilters()" [attr.aria-label]="'core.filter' | translate">
-                <ion-icon name="fas-filter" aria-hidden="true" />
+                <ion-icon name="cedia-filter" aria-hidden="true" />
             </ion-fab-button>
         </ion-fab>
     </div>

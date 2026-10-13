@@ -2,13 +2,13 @@
 <core-navbar-buttons slot="end">
     @if (showSearch) {
         <ion-button fill="clear" (click)="openSearch()" [ariaLabel]="'core.search' | translate">
-            <ion-icon name="fas-magnifying-glass" slot="icon-only" aria-hidden="true" />
+            <ion-icon name="cedia-search" slot="icon-only" aria-hidden="true" />
         </ion-button>
     }
 
     @if (!courseContentsPage) {
         <ion-button fill="clear" (click)="openModuleSummary()" aria-haspopup="true" [ariaLabel]="'core.info' | translate">
-            <ion-icon name="fas-circle-info" slot="icon-only" aria-hidden="true" />
+            <ion-icon name="cedia-information" slot="icon-only" aria-hidden="true" />
         </ion-button>
 
         <!-- Add an empty context menu so split view pages can add items, otherwise the menu disappears in some cases. -->
@@ -16,7 +16,7 @@
     } @else {
         <core-context-menu>
             <core-context-menu-item [priority]="5000" [content]="'core.info' | translate" (action)="openModuleSummary()"
-                iconAction="fas-circle-info" />
+                iconAction="cedia-information" />
         </core-context-menu>
     }
 </core-navbar-buttons>
@@ -47,7 +47,7 @@
         @if (availabilityMessage) {
             <ion-card class="core-info-card">
                 <ion-item>
-                    <ion-icon name="fas-circle-info" slot="start" aria-hidden="true" />
+                    <ion-icon name="cedia-information" slot="start" aria-hidden="true" />
                     <ion-label>{{ availabilityMessage }}</ion-label>
                 </ion-item>
             </ion-card>
@@ -57,7 +57,7 @@
         @if (showQAMessage) {
             <ion-card class="core-info-card">
                 <ion-item>
-                    <ion-icon name="fas-circle-info" slot="start" aria-hidden="true" />
+                    <ion-icon name="cedia-information" slot="start" aria-hidden="true" />
                     <ion-label>{{ 'addon.mod_forum.qandanotify' | translate }}</ion-label>
                 </ion-item>
             </ion-card>
@@ -84,7 +84,7 @@
             @if (forum.type === 'eachuser') {
                 <ion-card class="core-info-card">
                     <ion-item>
-                        <ion-icon name="fas-circle-info" slot="start" aria-hidden="true" />
+                        <ion-icon name="cedia-information" slot="start" aria-hidden="true" />
                         <ion-label>
                             <span>{{ 'addon.mod_forum.allowsdiscussions' | translate }}</span>
                         </ion-label>
@@ -95,7 +95,7 @@
             @if (hasBlockingEnabled) {
                 <ion-card class="core-info-card">
                     <ion-item>
-                        <ion-icon name="fas-circle-info" slot="start" aria-hidden="true" />
+                        <ion-icon name="cedia-information" slot="start" aria-hidden="true" />
                         <ion-label>
                             <span>{{ 'addon.mod_forum.thisforumisthrottled' | translate: {
                             $a: {
@@ -120,7 +120,7 @@
             }
 
             @if (!discussions || (!discussions.hasDiscussions && !errorLoadingDiscussions)) {
-                <core-empty-box icon="far-comments" [message]="'addon.mod_forum.forumnodiscussionsyet' | translate" />
+                <core-empty-box icon="cedia-message-multiple" [message]="'addon.mod_forum.forumnodiscussionsyet' | translate" />
             }
 
             @if (errorLoadingDiscussions) {
@@ -138,7 +138,7 @@
                                 <ion-icon name="fas-map-pin" [attr.aria-label]="'addon.mod_forum.discussionpinned' | translate" />
                             }
                             @if (discussion.starred) {
-                                <ion-icon name="fas-star" class="addon-forum-star"
+                                <ion-icon name="cedia-star" class="addon-forum-star"
                                     [attr.aria-label]="'addon.mod_forum.favourites' | translate" />
                             }
                             <span (ariaButtonClick)="discussions?.select(discussion)">
@@ -146,7 +146,7 @@
                                     [contextInstanceId]="module && module.id" [sanitize]="isOfflineDiscussion(discussion)" />
                             </span>
                             @if (discussion.locked) {
-                                <ion-icon name="fas-lock" class="addon-mod-forum-locked-icon"
+                                <ion-icon name="cedia-circle-lock" class="addon-mod-forum-locked-icon"
                                     [attr.aria-label]="'addon.mod_forum.discussionlocked' | translate" />
                             }
                         </p>
@@ -172,7 +172,7 @@
                                 }
                                 @if (isOfflineDiscussion(discussion)) {
                                     <p>
-                                        <ion-icon name="fas-clock" aria-hidden="true" />
+                                        <ion-icon name="cedia-clock" aria-hidden="true" />
                                         {{ 'core.notsent' | translate }}
                                     </p>
                                 }
@@ -182,7 +182,7 @@
                             <ion-row class="ion-text-center addon-mod-forum-discussion-more-info">
                                 <ion-col class="ion-text-start">
                                     <ion-note>
-                                        <ion-icon name="fas-clock" aria-hidden="true" /> {{ 'addon.mod_forum.lastpost' | translate }}
+                                        <ion-icon name="cedia-clock" aria-hidden="true" /> {{ 'addon.mod_forum.lastpost' | translate }}
                                         @if (discussion.timemodified > discussion.created) {
                                             {{ discussion.timemodified | coreTimeAgo }}
                                         } @else {
@@ -192,7 +192,7 @@
                                 </ion-col>
                                 <ion-col class="ion-text-end">
                                     <ion-note>
-                                        <ion-icon name="fas-comments" aria-hidden="true" />
+                                        <ion-icon name="cedia-message" aria-hidden="true" />
                                         {{ 'addon.mod_forum.numreplies' | translate:{numreplies: discussion.numreplies} }}
                                         @if (discussion.numunread) {
                                             <ion-badge class="ion-text-center">
@@ -229,7 +229,7 @@
     @if (canAddDiscussionToGroup) {
         <ion-fab slot="fixed" core-fab vertical="bottom" horizontal="end">
             <ion-fab-button (click)="openNewDiscussion()" [attr.aria-label]="addDiscussionText">
-                <ion-icon name="fas-plus" aria-hidden="true" />
+                <ion-icon name="cedia-add" aria-hidden="true" />
                 <span class="sr-only">{{ addDiscussionText }}</span>
             </ion-fab-button>
         </ion-fab>

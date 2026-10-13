@@ -8,7 +8,7 @@
         </ion-title>
         <ion-buttons slot="end">
             <ion-button fill="clear" (click)="gotoSearch()" [ariaLabel]="'addon.messages.searchcombined' | translate">
-                <ion-icon name="fas-magnifying-glass" slot="icon-only" aria-hidden="true" />
+                <ion-icon name="cedia-search" slot="icon-only" aria-hidden="true" />
             </ion-button>
             <!-- Add an empty context menu so split view pages can add items, otherwise the menu disappears in some cases. -->
             <core-context-menu />
@@ -45,7 +45,7 @@
                                 </ion-item>
                             </ion-list>
                         } @else {
-                            <core-empty-box icon="far-address-book" [message]="'addon.messages.nocontactsgetstarted' | translate" />
+                            <core-empty-box icon="cedia-address-book" [message]="'addon.messages.nocontactsgetstarted' | translate" />
                         }
 
                         <core-infinite-loading [enabled]="confirmedCanLoadMore" (action)="loadMore($event)" [error]="confirmedLoadMoreError"
@@ -79,7 +79,7 @@
                                 </ion-item>
                             </ion-list>
                         } @else {
-                            <core-empty-box icon="far-address-book" [message]="'addon.messages.nocontactrequests' | translate" />
+                            <core-empty-box icon="cedia-address-book" [message]="'addon.messages.nocontactrequests' | translate" />
                         }
                         <core-infinite-loading [enabled]="requestsCanLoadMore" (action)="loadMore($event)" [error]="requestsLoadMoreError"
                             position="bottom" />

@@ -34,8 +34,11 @@ import { AppRoutingModule, conditionalRoutes } from '@/app/app-routing.module';
 import { CoreScreen } from '@services/screen';
 import { CoreEvents } from '@singletons/events';
 import { CORE_COURSE_PAGE_NAME, CORE_COURSE_INDEX_PATH } from '@features/course/constants';
-import { PARTICIPANTS_PAGE_NAME } from './constants';
+import { PARTICIPANTS_PAGE_NAME, CORE_USER_PROFILE_PAGE_NAME } from './constants';
 import { CoreUserParticipantsLinkHandler } from './services/handlers/participants-link';
+import { CoreMainMenuRoutingModule } from '@features/mainmenu/mainmenu-routing.module';
+import { CoreMainMenuDelegate } from '@features/mainmenu/services/mainmenu-delegate';
+import { PageUserProfileMainMenuHandler } from './services/handlers/mainmenu';
 
 /**
  * Get user services.
@@ -110,6 +113,13 @@ const routes: Routes = [
     ], () => CoreScreen.isMobile),
 ];
 
+const mainMenuChildrenRoutes: Routes = [
+    {
+        path: CORE_USER_PROFILE_PAGE_NAME,
+        loadChildren: () => import('./user-lazy.module'),
+    },
+];
+
 const courseIndexRoutes: Routes = [
     {
         path: PARTICIPANTS_PAGE_NAME,
@@ -128,6 +138,8 @@ const courseIndexRoutes: Routes = [
     imports: [
         AppRoutingModule.forChild(appRoutes),
         CoreMainMenuTabRoutingModule.forChild(routes),
+        CoreMainMenuTabRoutingModule.forChild(mainMenuChildrenRoutes),
+        CoreMainMenuRoutingModule.forChild({ children: mainMenuChildrenRoutes }),
         CoreCourseIndexRoutingModule.forChild({ children: courseIndexRoutes }),
     ],
     providers: [
@@ -146,6 +158,7 @@ const courseIndexRoutes: Routes = [
             CoreCronDelegate.register(CoreUserSyncCronHandler.instance);
             CoreTagAreaDelegate.registerHandler(CoreUserTagAreaHandler.instance);
             CoreCourseOptionsDelegate.registerHandler(CoreUserCourseOptionHandler.instance);
+            CoreMainMenuDelegate.registerHandler(PageUserProfileMainMenuHandler.instance);
 
             CoreEvents.on(CoreEvents.USER_NOT_FULLY_SETUP, (data) => {
                 CoreUserHelper.openCompleteProfile(data.siteId);

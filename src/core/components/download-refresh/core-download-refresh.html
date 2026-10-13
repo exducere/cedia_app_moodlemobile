@@ -4,7 +4,7 @@
     @if (status() === statusNotDownloaded) {
         <ion-button fill="clear" (click)="download($event, false)" animate.enter="show-animation" animate.leave="hide-animation"
             [ariaLabel]="(statusTranslatable() || translates().notdownloaded) | translate: { name : statusSubject() }">
-            <ion-icon slot="icon-only" name="fas-cloud-arrow-down" aria-hidden="true" />
+            <ion-icon slot="icon-only" name="cedia-cloud-download" aria-hidden="true" />
         </ion-button>
     }
 

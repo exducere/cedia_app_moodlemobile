@@ -39,7 +39,7 @@ export class AddonStorageManagerSettingsHandlerService implements CoreSettingsHa
      */
     getDisplayData(): CoreSettingsHandlerData {
         return {
-            icon: 'fas-box-archive',
+            icon: 'cedia-inbox-download',
             title: 'addon.storagemanager.managedownloads',
             page: ADDON_STORAGE_MANAGER_PAGE_NAME,
             class: 'addon-storagemanager-settings-handler',
